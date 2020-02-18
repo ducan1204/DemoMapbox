@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css" rel="stylesheet" />
         <!-- Styles -->
         <style>
             html, body {
@@ -83,6 +84,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <div id='map' style='width: 800px; height: 600px;'></div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
@@ -96,5 +98,15 @@
                 </div>
             </div>
         </div>
+        <script>
+	        mapboxgl.accessToken = 'pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g';
+            var map = new mapboxgl.Map({
+            container: 'map', // container id
+            style: 'mapbox://styles/leducan/ck6r8m0af0rl21iqkaf30jxyj', // stylesheet location
+            center: [108.044493, 13.982936], // starting position [lng, lat]
+            zoom: 17 // starting zoom
+            });
+            map.addControl(new mapboxgl.NavigationControl());
+        </script>
     </body>
 </html>
