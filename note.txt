@@ -1,0 +1,27 @@
+npm install mapbox-gl --save
+secretan: sk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZzMTNsZDEwMmZmM3FwZWF2eHRzNDhnIn0.BJQ6b4hKT0nLO8DAUTb0Fg
+sk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZzMTNsZDEwMmZmM3FwZWF2eHRzNDhnIn0.BJQ6b4hKT0nLO8DAUTb0Fg
+
+{"bucket":"tilestream-tilesets-production",
+ "key":"3d/_pending/qesxsevdcpk2x2l19v371s6kc/leducan",
+ "accessKeyId":"ASIATNLVGLR2HAZ5J64O",
+ "secretAccessKey":"re4/coysJjp9MAQnJNmb7YaZAhOf2MmskFa288cM",
+ "sessionToken":"FwoGZXIvYXdzEDEaDN/ZWv/8feCSDrParSKSAtP7zNyTbusTyGi2OT1TtHC4GwkJECaDF4ye7+3FyxLTbPHBwjCj4qchhfAYsgLvaRhk/S9gOa+SLQ+AEkGukE14Wfy6ayh/gbYm4SP8Y3bq+FVEENGUyd0+6s7D4iULu/LaC/VwdUwzEGCqyA7g75kA57BBzxDOtGLWJzvYTQmOj1LxXKdD8pt8fWbLTK9he4UTtb9TtTpd3nPcVlPDya71DCkUrVRWXkQGtP0wuibarchmx5XrCZEfxTlZiJM44kCHHmehgZjdGbU0vS99ffUS+cHNBYKSCFuEWclaveDF5B5Q5Asu6/lp0v9/vgAnuULPSxrZ6DaYqsWdcMSPiU1GGoZ1t8dQcLmIpihmoHfxpUgogICw8gUyKRltrBjqZ5w4VsaUm6j7Dn0qIkEmDpQ260j59wOLoB+Ni5ldoYzmTmDx",
+ "url":"https://tilestream-tilesets-production.s3.amazonaws.com/3d/_pending/qesxsevdcpk2x2l19v371s6kc/leducan"}
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+access token: pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g
+
+
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v11'
+});
+</script>
