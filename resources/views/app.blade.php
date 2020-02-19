@@ -135,13 +135,13 @@
                 <div class="topnav" id="myTopnav">
                     <a href="/"><img src="/images/61935847.jpg
 " width="174px" height="54px;" title="Thongtin.land"></a>
-                    <a href="#home"><i style="font-size: 25px;" class="fa fa-home" title="home"></i></a>
-                    <a href="#news">Cần bán - Cho thuê</a>
-                    <a href="#news">Cần mua - Cho thuê</a>
-                    <a href="#contact">Dự án</a>
-                    <a href="quy-hoach">Quy hoạch</a>
-                    <a href="#contact">Tin tức</a>
-                    <a href="#about">Danh bạ</a>
+                    <a href="/"><i style="font-size: 25px;" class="fa fa-home" title="home"></i></a>
+                    <a href="#">Cần bán - Cho thuê</a>
+                    <a href="#">Cần mua - Cho thuê</a>
+                    <a href="#">Dự án</a>
+                    <a href="{{route('quyhoach')}}">Quy hoạch</a>
+                    <a href="#">Tin tức</a>
+                    <a href="#">Danh bạ</a>
                     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                         <i class="fa fa-bars"></i>
                     </a>

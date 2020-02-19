@@ -14,5 +14,5 @@
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/quy-hoach', 'IndexController@land');
+Route::get('/quy-hoach', 'IndexController@land')->name('quyhoach');
 Route::get('/quy-hoach/{id}', 'IndexController@detail');
