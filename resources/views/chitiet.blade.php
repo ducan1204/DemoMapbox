@@ -8,6 +8,7 @@
 @endsection
 @push('scripts')
 <script>
+    var style = <?php echo json_encode($style, JSON_HEX_TAG);?>;
     mapboxgl.accessToken = 'pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g';
 
     var map = new mapboxgl.Map({
