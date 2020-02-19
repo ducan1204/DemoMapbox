@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2accd98eda360528184391a4436704ae",
+    "content-hash": "c0eebc28d33d7f0a7acf7cd1114c1a99",
     "packages": [
         {
             "name": "bluevertex/mapbox-api-laravel",

@@ -11,7 +11,8 @@
         "php": "^7.2",
         "bluevertex/mapbox-api-laravel": "^1.0@alpha",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^5.8.9"
+        "laravel/framework": "^5.8.9",
+        "nesbot/carbon": "^2.30"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

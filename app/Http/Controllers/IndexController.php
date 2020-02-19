@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use BlueVertex\MapBoxAPILaravel\Facades\Mapbox;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class IndexController extends Controller
 {
@@ -11,7 +12,8 @@ class IndexController extends Controller
     protected $pk = "pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g";
     protected $username = "leducan";
     protected $base = "https://api.mapbox.com";
-    public function getListStyles(){
+    public function getListStyles()
+    {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL =>  $this->base . "/styles/v1/" . $this->username . "?access_token=" . $this->sk,
@@ -29,11 +31,11 @@ class IndexController extends Controller
         $response = curl_exec($curl);
         //dd($response);
         $err = curl_error($curl);
-        //dd($err);
         curl_close($curl);
         return $response;
     }
-    public function getStyle($id){
+    public function getStyle($id)
+    {
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL =>  $this->base . "/styles/v1/" . $this->username . "/" . $id . "?access_token=" . $this->pk,
@@ -57,7 +59,7 @@ class IndexController extends Controller
     }
     public function land()
     {
-        
+
         //$list = Mapbox::datasets()->list();
         //dd($list);
         //$response = Mapbox::uploads()->credentials();
@@ -70,22 +72,22 @@ class IndexController extends Controller
         // ]);
         // dd($list);
         $data = $this->getListStyles();
-        
+
         $styles = json_decode($data, true);
-        //var_dump($datas);
-        $count = count($styles);
+        //var_dump($styles);
+        //$count = count($styles);
         //dd($data);
-        return view('quyhoach', compact('styles', 'count'));
+        return view('quyhoach', compact('styles'));
     }
     public function detail(Request $request)
     {
         $style = $this->getStyle($request->id);
-        //dd($data);
+        //dd($style);
         $style = json_decode($style);
+        $style->created = Carbon::parse($style->created)->format('Y-m-d H:m:s');
         //var_dump($style);
         //$style = $request->id;
         //dd($zoom);
         return view('chitiet', compact('style'));
     }
-    
 }
