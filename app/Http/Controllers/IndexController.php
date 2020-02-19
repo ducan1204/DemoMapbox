@@ -87,4 +87,5 @@ class IndexController extends Controller
         //dd($zoom);
         return view('chitiet', compact('style'));
     }
+    
 }
