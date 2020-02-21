@@ -25,3 +25,4 @@ container: 'map',
 style: 'mapbox://styles/mapbox/streets-v11'
 });
 </script>
+https://medium.com/employbl/easily-build-administrator-login-into-a-laravel-5-app-8a942e4fef37
