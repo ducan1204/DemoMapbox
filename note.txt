@@ -26,3 +26,33 @@ style: 'mapbox://styles/mapbox/streets-v11'
 });
 </script>
 https://medium.com/employbl/easily-build-administrator-login-into-a-laravel-5-app-8a942e4fef37
+
+<form action="" class="form-horizontal">
+<div class="wrapper">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">          
+                    <select id="fld_default_comm_type" name="fld_default_comm_type[]" defaultValue="-1" class="m-wrap span10" field="fld_default_comm_type" appEditor="true">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="span4 checkerAlign">
+            <div class="control-group">
+                <div class="controls">
+                   
+                </div>
+            </div>
+        </div>
+        <div class="span2 checkerAlign"><input type="checkbox" name="fld_active[]" id="fld_active" editType="booleanEdit" appEditor="true"/></div>
+    </div>    
+</div>
+    <div><a href="#" id="addMore">Add Row</a></div>
+</form>
+
+$("#addMore").click(function(){   
+    $(".row-fluid:last").clone().appendTo(".wrapper");  
+});
