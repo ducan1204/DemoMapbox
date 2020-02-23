@@ -8,8 +8,8 @@
     <div class="row">
         <div class="col-sm-3"><img width="100%" alt="" src="/images/36528386.jpg"></div>
         <div class="col-sm-9">
-            <a href="/quy-hoach/{{$style['id']}}">{{$style['name']}}</a>
-            <p>{{$style['name']}}</p>
+            <a href="/quy-hoach/{{$style->id}}">{{$style->title}}</a>
+            <p>{{$style->address . ", " . $style->city}}</p>
         </div>
     </div>
     @endforeach

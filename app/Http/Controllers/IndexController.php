@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Map;
 use BlueVertex\MapBoxAPILaravel\Facades\Mapbox;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -10,7 +11,7 @@ class IndexController extends Controller
 {
     protected $sk = "sk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZzMTNsZDEwMmZmM3FwZWF2eHRzNDhnIn0.BJQ6b4hKT0nLO8DAUTb0Fg";
     protected $pk = "pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g";
-    protected $username = "leducan";
+    protected $username = "leducan";    //default
     protected $base = "https://api.mapbox.com";
     public function getListStyles()
     {
@@ -59,35 +60,31 @@ class IndexController extends Controller
     }
     public function land()
     {
+        $styles = Map::all();
+        //$data = $this->getListStyles();       // original
 
-        //$list = Mapbox::datasets()->list();
-        //dd($list);
-        //$response = Mapbox::uploads()->credentials();
-        //dd($response);
-        // $list = Mapbox::tilesets()->list([ 
-        //     'type' 			=> 'raster',
-        //     'visibility' 	=> 'public',
-        //     'sortby' 		=> 'modified',
-        //     'limit' 		=> 500
-        // ]);
-        // dd($list);
-        $data = $this->getListStyles();
-
-        $styles = json_decode($data, true);
-        //var_dump($styles);
-        //$count = count($styles);
-        //dd($data);
+        //$styles = json_decode($data, true);   // original
         return view('quyhoach', compact('styles'));
     }
     public function detail(Request $request)
     {
-        $style = $this->getStyle($request->id);
-        //dd($style);
+        //get selected map
+        $map = Map::find($request->id);
+        //explode string
+        $styleInfo = explode("/", $map->map_style);
+        //get style_id
+        $style_id = $styleInfo[4];
+        //get username
+        $username = $styleInfo[3];
+        $this->username = $styleInfo[3];
+        //get Style through curl
+        $style = $this->getStyle($style_id);
+        //dd($map->created_at);
+        $time = Carbon::parse($map->created_at)->format('Y-m-d H:m:s');
+
         $style = json_decode($style);
-        $style->created = Carbon::parse($style->created)->format('Y-m-d H:m:s');
-        //var_dump($style);
-        //$style = $request->id;
-        //dd($zoom);
-        return view('chitiet', compact('style'));
+        //dd($style);
+        //$style->created = Carbon::parse($style->created)->format('Y-m-d H:m:s');
+        return view('chitiet', compact('style', 'map', 'username', 'style_id', 'time'));
     }
 }

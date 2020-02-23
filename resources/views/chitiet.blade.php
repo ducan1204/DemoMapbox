@@ -3,22 +3,24 @@
 @section('title', 'Mapbox Demo')
 @section('content')
 <div class="col-sm-8">
-    <p style="font-size: 50px; font-weight: 900; color: #0584bd;text-align: center;">{{$style->name}}</p>
-    <p style="font-size: 20px; font-weight: 900;">{{$style->created}}</p>
+    <p style="font-size: 50px; font-weight: 900; color: #0584bd;text-align: center;">{{$map->title}}</p>
+    <p style="font-size: 20px; font-weight: 900;">{{$map->address . ", " . $map->city}}</p>
+    <p style="font-size: 20px; font-weight: 900;">{{$map->created_at}}</p>
     <!-- <img style="margin: auto;" width="100%" alt="" src="/images/36528386.jpg"> -->
     <br>
-    <br>
-    <div id='map' style='width: 700px; height: 400px; margin: auto; font-size: 15px; font-weight: 600;'>Bản đồ quy hoạch:</div>
+    <div id='map' onclick="myFunction()" style='width: 700px; height: 400px; margin: auto; font-size: 15px; font-weight: 600;'>Bản đồ quy hoạch:</div>
 </div>
 @endsection
 @push('scripts')
 <script>
     var style = <?php echo json_encode($style, JSON_HEX_TAG); ?>;
-    mapboxgl.accessToken = 'pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g';
-
+    var map = <?php echo json_encode($map, JSON_HEX_TAG); ?>;
+    var username = "<?php echo $username; ?>";
+    var style_id = "<?php echo $style_id; ?>";
+    mapboxgl.accessToken = map.access_token;
     var map = new mapboxgl.Map({
         container: 'map', // container id
-        style: 'mapbox://styles/leducan/{{$style->id}}', // stylesheet location
+        style: 'mapbox://styles/' + username + '/' + style_id, // stylesheet location
         center: [style.center[0], style.center[1]], // starting position [lng, lat]
         zoom: style.zoom // starting zoom
     });

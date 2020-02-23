@@ -25,10 +25,10 @@ Route::get('dashboar/maps', 'AdminController@maps')->name('maps');
 Route::namespace('map')->group(function () {
     Route::get('dashboard/maps', 'MapController@index')->name('map.index');
     Route::get('dashboard/maps/create', 'MapController@create')->name('map.create');
-    Route::get('students/edit/{id}', 'StudentController@edit')->name('student.edit');
-    Route::post('students', 'StudentController@store')->name('student.store');
-    Route::put('students', 'StudentController@update')->name('student.update');
-    Route::get('students/destroy/{id}', 'StudentController@destroy')->name('student.destroy');
+    Route::get('dashboard/maps/edit/{id}', 'MapController@edit')->name('map.edit');
+    Route::post('dashboard/maps', 'MapController@store')->name('map.store');
+    Route::put('dashboard/maps', 'MapController@update')->name('map.update');
+    Route::get('dashboard/students/destroy/{id}', 'MapController@destroy')->name('map.destroy');
 });
 
 Route::get('/quy-hoach', 'IndexController@land')->name('quyhoach');
