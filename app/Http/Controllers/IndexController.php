@@ -77,6 +77,7 @@ class IndexController extends Controller
         //get username
         $username = $styleInfo[3];
         $this->username = $styleInfo[3];
+        $this->pk = $map->access_token;
         //get Style through curl
         $style = $this->getStyle($style_id);
         //dd($map->created_at);

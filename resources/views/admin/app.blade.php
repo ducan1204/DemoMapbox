@@ -89,7 +89,7 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
-    @stack('push')
+    @stack('script')
 </body>
 
 </html>
