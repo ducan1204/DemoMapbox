@@ -16,7 +16,7 @@ class MapController extends Controller
     }
     public function create()
     {
-        return view('admin.map.create');
+        return view('admin.map.create2');
     }
     public function edit($id)
     {

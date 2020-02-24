@@ -161,18 +161,19 @@
 
         <div class="row" style="padding-top: 0px">
             <div class="col-sm-2">
-                <a href="https://thongtin.land/register"><img width="100%" alt="" src="https://thongtin.land/api/uploads/baner quang cao2.jpg"></a>
+                <!-- <a href="https://thongtin.land/register"><img width="100%" alt="" src="https://thongtin.land/api/uploads/baner quang cao2.jpg"></a>
                 <a href="https://www.facebook.com/land.thongtin/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/quang-cao1.gif"></a>
-                <a href="https://thongtin.land/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/Left 4- 500-300.jpg"></a>
+                <a href="https://thongtin.land/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/Left 4- 500-300.jpg"></a> -->
             </div>
             @section('content')
             @show
-            <div class="col-sm-2"><a href="https://thongtin.land/register"><img width="100%" alt="" src="https://thongtin.land/api/uploads/baner quang cao2.jpg"></a>
+            <div class="col-sm-2">
+                <!-- <a href="https://thongtin.land/register"><img width="100%" alt="" src="https://thongtin.land/api/uploads/baner quang cao2.jpg"></a>
                 <a href="https://www.facebook.com/land.thongtin/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/quang-cao1.gif"></a>
-                <a href="https://thongtin.land/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/Left 4- 500-300.jpg"></a></div>
+                <a href="https://thongtin.land/"><img width="100%" alt="" src="https://thongtin.land/api/uploads/Left 4- 500-300.jpg"></a></div> -->
+            </div>
         </div>
-    </div>
-    @stack('scripts')
+        @stack('scripts')
 </body>
 
 </html>

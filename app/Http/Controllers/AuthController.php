@@ -33,7 +33,7 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect()->intended('dashboard');
         }
-        return Redirect::to("admin.login")->withSuccess('Oppes! You have entered invalid credentials');
+        return Redirect::to("/login")->withSuccess('Oppes! You have entered invalid credentials');
     }
 
     public function postRegistration(Request $request)
@@ -57,7 +57,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return view('admin.dashboard');
         }
-        return Redirect::to("admin.login")->withSuccess('Opps! You do not have access');
+        return Redirect::to("login")->withSuccess('Opps! You do not have access');
     }
 
     public function create(array $data)
@@ -74,6 +74,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return Redirect('admin.login');
+        return Redirect('login');
     }
 }

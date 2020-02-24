@@ -18,7 +18,7 @@ Route::get('login', 'AuthController@index');
 Route::post('post-login', 'AuthController@postLogin');
 Route::get('registration', 'AuthController@registration');
 Route::post('post-registration', 'AuthController@postRegistration');
-Route::get('dashboard', 'AuthController@dashboard');
+Route::get('dashboard', 'AuthController@dashboard')->name('dashboard');
 Route::get('logout', 'AuthController@logout');
 
 Route::get('dashboar/maps', 'AdminController@maps')->name('maps');
