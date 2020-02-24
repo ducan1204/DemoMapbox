@@ -30,11 +30,47 @@
             <label for="map_style">Map Style</label>
             <input type="text" class="form-control" id="mapStyle" name="mapStyle" placeholder="Please input map style">
         </div>
-        <div class="form-group">
+        <div class="form-group" id="form">
             <label for="accessToken">Access Token</label>
             <input type="text" class="form-control" id="accessToken" name="accessToken" placeholder="Please input your access token">
         </div>
+        <button type="button" class="btn btn-primary" id="add">Add map</button>
         <button type="submit" class="btn btn-primary">Create map</button>
     </form>
 </div>
 @endsection
+@push('script')
+<script>
+    $(document).ready(function(){
+        alert('a');
+        var count = 2;
+        dynamic_field(count);
+        function dynamic_field(number)
+        {
+            var html = '<div class="form-group">';
+            html += '<label for="map_style">Map Style</label>';
+            html += '<input type="text" class="form-control" id="mapStyle" name="mapStyle[]" placeholder="Please input map style">';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label for="accessToken">Access Token</label>';
+            html += '<input type="text" class="form-control" id="accessToken" name="accessToken[]" placeholder="Please input your access token">';
+            html += '</div>';
+            if(number > 1)
+            {
+                html += '<button type="button" name="remove" id="remove" class="btn btn-danger">Remove</button>'
+                $('#form').append(html);
+            }
+            html += '<button type="button" class="btn btn-primary" name="add" id="add">Add Token</button>"';
+            $('#form').html(html);
+        }
+        $('#add').click(function(){
+            count++;
+            dynamic_field(count);
+        });
+        $(document).on('click', '#remove', function(){
+            count--;
+            dynamic_field(count);
+        });
+    });
+</script>
+@endpush
