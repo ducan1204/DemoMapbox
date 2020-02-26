@@ -5,7 +5,7 @@
 <div class="container">
     <div style="font-size: 30px; font-weight:bold; margin-bottom: 20px;">Create map 2</div>
     <form method="post" id="form">
-        <span id=" result"></span>
+        <span id="result"></span>
         @csrf
         <div class="form-group">
             <label for="formGroupExampleInput">Title</label>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Map;
 use App\Http\Controllers\Controller;
 use App\Map;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class MapController extends Controller
 {
@@ -24,8 +24,8 @@ class MapController extends Controller
     }
     public function create2ajax(Request $request)
     {
-        dd('a');
         if ($request->ajax()) {
+
             $rules = array(
                 'mapStyle.*'  => 'required',
                 'accessToken.*'  => 'required'
@@ -38,15 +38,21 @@ class MapController extends Controller
             }
 
             $mapStyle = $request->mapStyle;
-            $last_name = $request->last_name;
-            for ($count = 0; $count < count($first_name); $count++) {
+            $accessToken = $request->accessToken;
+            for ($count = 0; $count < count($mapStyle); $count++) {
                 $data = array(
-                    'first_name' => $first_name[$count],
-                    'last_name'  => $last_name[$count]
+                    'mapStyle' => $mapStyle[$count],
+                    'accessToken'  => $accessToken[$count]
                 );
                 $insert_data[] = $data;
             }
+            //$insert_data[] = array("title" => $request->title);
+            $title = $request->title;
+            $address = $request->address;
+            $city = $request->city;
 
+            $send_back_data[] = compact('title', 'address', 'city', 'insert_data');
+            print_r($send_back_data);
             //DynamicField::insert($insert_data);         //for model
             return response()->json([
                 'success'  => 'Data Added successfully.'
