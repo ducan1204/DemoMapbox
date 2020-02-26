@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('district_id')->references('id')->on('districts');
-            $table->foreign('sub_districts')->references('id')->on('sub_istricts');
+            $table->foreign('sub_district_id')->references('id')->on('sub_districts');
         });
     }
 
