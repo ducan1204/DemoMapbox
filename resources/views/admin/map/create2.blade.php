@@ -4,7 +4,8 @@
 @section('content')
 <div class="container">
     <div style="font-size: 30px; font-weight:bold; margin-bottom: 20px;">Create map 2</div>
-    <form method="post" action="{{route('map.store')}}">
+    <form method="post" id="form">
+        <span id=" result"></span>
         @csrf
         <div class="form-group">
             <label for="formGroupExampleInput">Title</label>
@@ -75,6 +76,34 @@
             $('button.pair_' + count).remove();
             count--;
 
+        });
+        $('#form').on('submit', function(event) {
+            $('#save').html('Before');
+            event.preventDefault();
+            $.ajax({
+                url: '{{ route("map.create2ajax") }}',
+                method: 'post',
+                data: $(this).serialize(),
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#save').html('Before');
+                    $('#save').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    if (data.error) {
+                        var error_html = '';
+                        for (var count = 0; count < data.error.length; count++) {
+                            error_html += '<p>' + data.error[count] + '</p>';
+                        }
+                        $('#result').html('<div class="alert alert-danger">' + error_html + '</div>');
+                    } else {
+                        dynamic_field(1);
+                        $('#result').html('<div class="alert alert-success">' + data.success + '</div>');
+                    }
+                    $('#save').attr('disabled', false);
+                    $('#save').html('Change');
+                }
+            })
         });
     });
 </script>

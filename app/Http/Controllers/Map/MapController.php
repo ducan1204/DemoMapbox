@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Map;
 use App\Http\Controllers\Controller;
 use App\Map;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Validator;
 
 class MapController extends Controller
 {
@@ -17,6 +17,41 @@ class MapController extends Controller
     public function create()
     {
         return view('admin.map.create');
+    }
+    public function create2()
+    {
+        return view('admin.map.create2');
+    }
+    public function create2ajax(Request $request)
+    {
+        dd('a');
+        if ($request->ajax()) {
+            $rules = array(
+                'mapStyle.*'  => 'required',
+                'accessToken.*'  => 'required'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json([
+                    'error'  => $error->errors()->all()
+                ]);
+            }
+
+            $mapStyle = $request->mapStyle;
+            $last_name = $request->last_name;
+            for ($count = 0; $count < count($first_name); $count++) {
+                $data = array(
+                    'first_name' => $first_name[$count],
+                    'last_name'  => $last_name[$count]
+                );
+                $insert_data[] = $data;
+            }
+
+            //DynamicField::insert($insert_data);         //for model
+            return response()->json([
+                'success'  => 'Data Added successfully.'
+            ]);
+        }
     }
     public function edit($id)
     {

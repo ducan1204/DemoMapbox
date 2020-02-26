@@ -30,6 +30,7 @@
             <div class="list-group list-group-flush">
                 <a href="{{route('dashboard')}}" class="list-group-item list-group-item-action bg-light">Dashboad</a>
                 <a href="{{route('map.index')}}" class="list-group-item list-group-item-action bg-light">Maps</a>
+                <a href="{{route('map.create2')}}" class="list-group-item list-group-item-action bg-light">Maps2</a>
                 <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a> -->
                 <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a> -->
                 <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a> -->
