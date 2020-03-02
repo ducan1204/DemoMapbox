@@ -1,0 +1,28 @@
+#menu1{
+    color: red;
+}
+.nav-item{
+    padding: 0px 0px;
+    text-align: center;
+    color: #337ab7;
+    background-color: #cadcea;
+}
+.nav-item :hover{
+    background-color: #eee;
+}
+.nav-link {
+    padding: 0.9em 0.5em;
+    height: 100%;
+}
+select{
+    width: 100%;
+    margin-bottom: 3px;
+}
+.panel-body{
+    border-color: black;
+    border: 1px solid;
+    padding: 10px;
+}
+.nav-tabs{
+    height: 80px;
+}

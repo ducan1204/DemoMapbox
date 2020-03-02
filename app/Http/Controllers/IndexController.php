@@ -60,9 +60,8 @@ class IndexController extends Controller
     }
     public function land()
     {
-        $styles = Map::all();
+        $styles = Map::paginate(10);
         //$data = $this->getListStyles();       // original
-
         //$styles = json_decode($data, true);   // original
         return view('quyhoach', compact('styles'));
     }

@@ -3,12 +3,13 @@
 @section('title', 'Mapbox Demo')
 @section('content')
 <div class="col-sm-8">
-    <p style="font-size: 50px; font-weight: 900; color: #0584bd;text-align: center;">{{$map->title}}</p>
-    <p style="font-size: 20px; font-weight: 900;">{{$map->address . ", " . $map->city}}</p>
-    <p style="font-size: 20px; font-weight: 900;">{{$map->created_at}}</p>
+    <p style="font-size: 28px; font-weight: 900; color: #055699;text-align: left;">{{$map->title}}</p>
+    <p style="font-size: 15px; font-weight: 900;">{{$map->address . ", " . $map->city}}</p>
+    <p style="font-size: 15px; font-weight: 900;">{{$map->created_at}}</p>
     <!-- <img style="margin: auto;" width="100%" alt="" src="/images/36528386.jpg"> -->
-    <br>
-    <div id='map' onclick="myFunction()" style='width: 700px; height: 400px; margin: auto; font-size: 15px; font-weight: 600;'>Bản đồ quy hoạch:</div>
+    <hr>
+    <div id='map' onclick="myFunction()" style='width: 800px; height: 500px; margin: auto; font-size: 15px; font-weight: 600;'>Bản đồ quy hoạch:</div>
+    <br><br><br>
 </div>
 @endsection
 @push('scripts')

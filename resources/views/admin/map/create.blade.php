@@ -34,8 +34,40 @@
             <label for="accessToken">Access Token</label>
             <input type="text" class="form-control" id="accessToken" name="accessToken" placeholder="Please input your access token">
         </div>
-        <button type="button" class="btn btn-primary" id="add">Add map</button>
+        <button type="button" onclick="myFunction()" class="btn btn-primary">Load map</button>
+        <div id='map' style='width: 600px; height: 300px; margin: auto; font-size: 15px; font-weight: 600;'></div>
         <button type="submit" class="btn btn-primary">Create map</button>
     </form>
 </div>
 @endsection
+@push('script')
+<script>
+    function myFunction() {
+        $.ajax({
+            url: '{{ route("map.create2ajax") }}',
+            method: 'post',
+            data: $(this).serialize(),
+            dataType: 'json',
+            beforeSend: function() {
+                $('#save').html('Before');
+                $('#save').attr('disabled', 'disabled');
+            },
+            success: function(data) {
+                if (data.error) {
+                    var error_html = '';
+                    for (var count = 0; count < data.error.length; count++) {
+                        error_html += '<p>' + data.error[count] + '</p>';
+                    }
+                    $('#result').html('<div class="alert alert-danger">' + error_html + '</div>');
+                } else {
+                    dynamic_field(1);
+                    $('#result').html('<div class="alert alert-success">' + data.success + '</div>');
+                }
+                $('#save').attr('disabled', false);
+            }
+        })
+    }
+
+    function fetchMap
+</script>
+@endpush

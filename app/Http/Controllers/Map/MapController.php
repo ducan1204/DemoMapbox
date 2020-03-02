@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class MapController extends Controller
 {
+    protected $sk = "sk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZzMTNsZDEwMmZmM3FwZWF2eHRzNDhnIn0.BJQ6b4hKT0nLO8DAUTb0Fg";
+    protected $pk = "pk.eyJ1IjoibGVkdWNhbiIsImEiOiJjazZxaW1jZW4xdGRoM2RwZm00eHZvOWkwIn0.wdU-dm5AGs-IrtoKISlW3g";
+    protected $username = "leducan";    //default
+    protected $base = "https://api.mapbox.com";
     public function index()
     {
         $maps = Map::all();
@@ -17,6 +21,68 @@ class MapController extends Controller
     public function create()
     {
         return view('admin.map.create');
+    }
+    public function fetchMap(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $rules = array(
+                'mapStyle.*'  => 'required',
+                'accessToken.*'  => 'required'
+            );
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json([
+                    'error'  => $error->errors()->all()
+                ]);
+            }
+
+            $mapStyle = $request->mapStyle;
+            $accessToken = $request->accessToken;
+            // for ($count = 0; $count < count($mapStyle); $count++) {
+            //     $data = array(
+            //         'mapStyle' => $mapStyle[$count],
+            //         'accessToken'  => $accessToken[$count]
+            //     );
+            //     $insert_data[] = $data;
+            // }
+            //$insert_data[] = array("title" => $request->title);
+            $styleInfo = explode("/", $request->map_style);
+            $style_id = $styleInfo[4];
+            $username = $styleInfo[3];
+            $this->username = $styleInfo[3];
+            $style = $this->getStyle($style_id);
+            print_r($style);
+            $send_back_data[] = compact('title', 'address', 'city', 'insert_data');
+            print_r($send_back_data);
+            //DynamicField::insert($insert_data);         //for model
+            return response()->json([
+                'success'  => 'Data Added successfully.'
+            ]);
+        }
+    }
+    public function getStyle($id)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL =>  $this->base . "/styles/v1/" . $this->username . "/" . $id . "?access_token=" . $this->pk,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "Cache-Control: no-cache",
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        //dd($response);
+        $err = curl_error($curl);
+        //dd($err);
+        curl_close($curl);
+        return $response;
     }
     public function create2()
     {
