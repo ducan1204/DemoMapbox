@@ -1,0 +1,1771 @@
+var urlApi = "https://thongtin.land/api/api.php?db=bds&key=";
+var urlUpload = "https://thongtin.land/api/uploads/";
+var urlUpload2 = "https://thongtin.land/img/";
+var uploadUrl = "https://thongtin.land/api/uploads.php";
+// var uploadUrl = "http://localhost:1306/realty/api/uploads.php";
+// var urlUpload = "http://localhost:1306/realty/public/api/uploads/";
+// var urlUpload2 = "http://localhost:1306/realty/public/img/";
+// var urlApi = "http://localhost:1306/realty/public/api/api.php?db=bds&key=";
+function formatMoney (value){
+    if(value == 0){
+      return 0;
+    }
+    value = value.toString().replace(/^\s+|\s+$/g,'');
+    return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+}
+
+function formatNgay(value){
+    var today = new Date(value);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    return dd + '/' + mm + '/' + yyyy;
+}
+
+function formatNgayTemp(value){
+    var today = new Date(value);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd;
+}
+
+function formatDatePicker(value){
+    var today = new Date(value);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    return new Date(yyyy, mm, dd);
+}
+var app = angular.module('realty', ['angularFileUpload'], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+});
+app.filter('sug', function() {
+    return function(str){
+
+        var slug;
+
+        //Đổi chữ hoa thành chữ thường
+        slug = str.toLowerCase();
+
+        //Đổi ký tự có dấu thành không dấu
+        slug = slug.replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a');
+        slug = slug.replace(/é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ/gi, 'e');
+        slug = slug.replace(/i|í|ì|ỉ|ĩ|ị/gi, 'i');
+        slug = slug.replace(/ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ/gi, 'o');
+        slug = slug.replace(/ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự/gi, 'u');
+        slug = slug.replace(/ý|ỳ|ỷ|ỹ|ỵ/gi, 'y');
+        slug = slug.replace(/đ/gi, 'd');
+        //Xóa các ký tự đặt biệt
+        slug = slug.replace(/\`|\~|\!|\@|\#|\||\$|\%|\^|\&|\*|\(|\)|\+|\=|\,|\.|\/|\?|\>|\<|\'|\"|\:|\;|_/gi, '');
+        //Đổi khoảng trắng thành ký tự gạch ngang
+        slug = slug.replace(/ /gi, "-");
+        //Đổi nhiều ký tự gạch ngang liên tiếp thành 1 ký tự gạch ngang
+        //Phòng trường hợp người nhập vào quá nhiều ký tự trắng
+        slug = slug.replace(/\-\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-\-/gi, '-');
+        slug = slug.replace(/\-\-/gi, '-');
+        //Xóa các ký tự gạch ngang ở đầu và cuối
+        slug = '@' + slug + '@';
+        slug = slug.replace(/\@\-|\-\@|\@/gi, '');
+        //In slug ra textbox có id “slug”
+        return slug;
+
+    }
+
+});
+app.filter('to_trusted', ['$sce', function($sce){
+    return function(text) {
+        return $sce.trustAsHtml(text);
+    };
+}]);
+app.factory("Service", function($http){
+    return{
+        get_location_from_google: function(address){
+            return $http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyDNb5bTZo_8aAXLtlENwOdPUjarXpP52VY")
+        },
+        get_IP: function(){
+            return $http.get("http://ipv4.myexternalip.com/json");
+        },
+        nap_tien: function (id, amount) {
+            return $http.get(urlApi + "nap_tien&id=" + id + "&amount=" + amount);
+        },
+        get_list_bds_thong_ke: function(nam, thang, tinh, huyen, phuong, duong){
+            return $http.get(urlApi + "get_list_bds_thong_ke&date_start=" + nam + "&date_end=" + thang + "&province=" + tinh + "&district=" + huyen + "&ward=" + phuong + "&street=" + duong);
+        },
+        thong_ke: function(nam, thang, tinh, huyen, phuong, duong) {
+            return $http.get(urlApi + "thong_ke&date_start=" + nam + "&date_end=" + thang + "&province=" + tinh + "&district=" + huyen + "&ward=" + phuong + "&street=" + duong);
+        },
+        getListProvince: function(){
+            return $http.get(urlApi + "get_list_province");
+        },
+        getListDistrict: function(id){
+            return $http.get(urlApi + "get_list_district&id=" + id);
+        },
+        getListWard: function(id){
+            return $http.get(urlApi + "get_list_ward&id=" + id);
+        },
+        get_widget_news: function () {
+            return $http.get(urlApi + "get_widget_news");
+        },
+        get_news_category: function () {
+            return $http.get(urlApi + "get_news_category");
+        },
+        get_post_in_widget: function () {
+            return $http.get(urlApi + "get_post_in_widget");
+        },
+        changeWidgetNews: function (id, type) {
+            return $http.get(urlApi + "changeWidgetNews&id="+id+"&type=" + type);
+        },
+        get_ads: function () {
+            return $http.get(urlApi + "get_ads");
+        },
+        change_widget_image: function (id, image, url) {
+            return $http.get(urlApi + "change_widget_image&id=" + id + "&title="+image+"&name=" + url);
+        },
+
+         // START ĐĂNG TIN
+        dangtin_getHinhThuc: function(id){
+            return $http.get(urlApi + "get_hinh_thuc_by_nhom&id=" + id);
+        },
+        dangtin_getInfoByHinhThuc: function(id){
+            return $http.get(urlApi + "get_info_by_hinh_thuc&id=" + id);
+        },
+        dangtin: function(user_id, role, hinh_thuc, loai_tin, du_an, title, province, district, ward, street, address, lat, lng, description_dientich, description_gia, giatong, description_donvitinh, description_mota, contact_name, contact_phone, contact_email, contact_address, contact_facebook, tienich, loai_tin_vip, date_start, date_end, image){
+            url = "dang_tin&user_id=" + user_id + "&role=" + role + "&hinh_thuc=" + hinh_thuc + "&loai_tin=" + loai_tin + "&du_an=" + du_an + "&title=" + title + "&province=" + province + "&district=" + district + "&ward=" + ward + "&street=" + street + "&address=" + address + "&lat=" + lat + "&lng=" + lng + "&description_dientich=" + description_dientich + "&description_gia=" + description_gia + "&amount=" + giatong + "&description_donvitinh=" + description_donvitinh + "&description_mota=" + description_mota + "&contact_name=" + contact_name + "&contact_phone=" + contact_phone + "&contact_email=" + contact_email + "&contact_address=" + contact_address + "&contact_facebook=" + contact_facebook + "&tienich=" + tienich + "&loai_tin_vip=" + loai_tin_vip + "&date_start=" + date_start + "&date_end=" + date_end + "&image="+ image;
+            return $http.get(urlApi + url.replace(/undefined/g,''));
+        },
+        get_money: function(id){
+            return $http.get(urlApi + "get_money&id=" + id);
+        },
+        get_lich_su_nap_tien: function(id, page){
+            return $http.get(urlApi + "get_amount_history&id=" + id + "&type=1&page=" + page);
+        },
+        get_lich_su_thanh_toan: function(id, page){
+            return $http.get(urlApi + "get_amount_history&id=" + id + "&type=2&page=" + page);
+        },
+        add_news_category: function(name){
+            return $http.get(urlApi + "add_news_category&name=" + name);
+        },
+        delete_news_category: function(id){
+            return $http.get(urlApi + "delete_news_category&id=" + id);
+        },
+
+        get_list_bds: function(page){
+            return $http.get(urlApi + "get_list_bds&type=0&orderby=1&page=" + page);
+        },
+        get_list_bds_2: function(nhom, hinh_thuc, loai_tin, du_an, title, province, district, ward, street, description_dientich, description_gia, page, type, orderby){
+            var url = "get_list_bds&nhom=" + nhom + "&hinh_thuc=" + hinh_thuc + "&loai_tin=" + loai_tin + "&du_an=" + du_an + "&title=" + title + "&province=" + province + "&district=" + district + "&ward=" + ward + "&street=" + street + "&description_dientich=" + description_dientich + "&description_gia=" + description_gia + "&page=" + page + "&type="+type+"&orderby=";
+            return $http.get(urlApi + url.replace(/undefined/g,''));
+        },
+        get_list_du_an: function(id, province, district, ward, page){
+            return $http.get(urlApi + "get_list_du_an&get_list_du_an&type=1&page="+page+"&limit=5");
+        },
+
+        get_list_moi_gioi: function(province, district, ward, page){
+            var url = "get_list_moi_gioi&province=" + province + "&district=" + district + "&ward=" +  ward + "&page=" + page;
+            return $http.get(urlApi + url.replace(/undefined/g,''));
+        },
+        get_detail_moi_gioi: function(id){
+            return $http.get(urlApi + "get_detail_moi_gioi&id=" + id);
+        },
+        get_list_friend: function(id){
+            return $http.get(urlApi + "get_list_friend&id=" + id);
+        },
+        change_status_relationship: function(id, type){
+            return $http.get(urlApi + "change_status_relationship&id=" + id + "&type=" + type);
+        },
+        get_list_friend_pending: function(id, type){
+            return $http.get(urlApi + "get_list_friend_pending&id=" + id + "&type=" + type);
+        },
+        ket_ban: function(id, user){
+            return $http.get(urlApi + "ket_ban&id=" + id + "&user=" + user);
+        },
+        share_tin_bds: function(user_id, user, id){
+            return $http.get(urlApi + "share_tin_bds&user_id=" + user_id + "&user=" + user + "&id=" + id);
+        }
+    }
+});
+app.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
+app.service('fileUpload',function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl2){
+        var fd = new FormData();
+        fd.append('file', file);
+
+        $http.post(uploadUrl2, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+
+            .success(function(res){
+                console.log(res);
+            })
+
+            .error(function(error){
+                console.log(error);
+            });
+    }
+});
+app.controller('AdsController', function($scope, $http, Service, fileUpload) {
+    if(localStorage.success == 1){
+        localStorage.success = 0;
+        swal("Thành công!", "Hình ảnh quảng cáo đã được thay đổi", "success");
+    }
+    $scope.ads = {};
+    Service.get_ads().success(function (res) {
+        console.log(res);
+        $scope.ads = res;
+    });
+    $scope.myFile = [];
+    $scope.uploadFile = function(id){
+        var url = document.getElementById('url_' + id).value;
+        var file = $scope.myFile[id];
+        console.log(file);
+        if(file){
+            file = urlUpload + file.name;
+        }else{
+            file = '';
+        }
+
+        Service.change_widget_image(id, file, url).success(function (res) {
+            localStorage.success = 1;
+            location.reload();
+        });
+        console.log('file is ' );
+        console.dir(file);
+
+        
+        fileUpload.uploadFileToUrl($scope.myFile[id], uploadUrl);
+    };
+
+});
+app.controller('AppController', function($scope, Service) {
+    $scope.ads = {};
+    Service.get_ads().success(function (res) {
+        console.log(res);
+        $scope.ads = res;
+    });
+    Service.get_post_in_widget().success(function (res2) {
+        console.log(res2);
+        $scope.list_news = res2;
+    })
+
+    Service.getListProvince().success(function(res){
+        $scope.data_province_2 = res.data;
+    });
+
+    $scope.getDistrict = function(id){
+        Service.getListDistrict(id).success(function(res){
+            $scope.data_district_2 = res.data;
+        })
+    };
+    $scope.getWard = function(id){
+        Service.getListWard(id).success(function(res){
+            $scope.data_ward_2 = res.data;
+            $scope.data_street_2 = res.data_street;
+        })
+    }
+
+});
+app.controller('TinDangController', function($scope, Service){
+    var i = 0;
+    $scope.xemthem = "Xem thêm";
+    $scope.list_tin_dang = [];
+    Service.get_list_bds(i).success(function(res){
+        $scope.list_tin_dang = res.data;
+    });
+    
+    $scope.loadmore = function(){
+        i++;
+        Service.get_list_bds(i).success(function(res){
+            $scope.list_tin_dang = $scope.list_tin_dang.concat(res.data);
+            console.log(res.data);
+            if(res.data.length == 0){
+                $scope.xemthem = "Đã tải hết tin đăng";
+            }
+        });
+    }
+    
+});
+app.controller('ChuDeController', function($scope, $http, Service) {
+    if(localStorage.success == 1){
+        swal("Thành công!", "Chủ đề mới đã được tạo", "success");
+        localStorage.success = 0;
+    }
+    $scope.test = "asdasd";
+    Service.get_widget_news().success(function (res) {
+        $scope.list_chu_de = res.data;
+    });
+
+    Service.get_news_category().success(function(res){
+        console.log(res);
+        $scope.list_category = res.data;
+    });
+
+    $scope.changeWidgetNews = function (id, type) {
+        console.log(type);
+        type = document.getElementById('category_' + type).value;
+      Service.changeWidgetNews(id, type).success(function (res) {
+          swal("Thành công!", "Thay đổi chủ đề tin tức thành công", "success");
+      })
+    };
+
+    $scope.add_news_category = function(){
+        swal({
+            title: "Tạo chủ đề!",
+            text: "Nhập tên chủ đề vào ô bên dưới:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "Ví dụ: Thị trường bất động sản"
+        },
+        function(inputValue){
+            if (inputValue === false) return false;
+          
+            if (inputValue === "") {
+                swal.showInputError("Bạn chưa nhập tên chủ đề!");
+                return false
+            }
+            Service.add_news_category(inputValue).success(function(res){
+                if(res.status == 200){
+                    localStorage.success = 1;
+                    location.reload();
+                }
+            })
+          
+            
+        });
+    }
+
+});
+app.controller('AdminController', function ($scope, Service) {
+    if(localStorage.success == 1){
+        swal("Thành công!", "Bạn vừa nạp thành công số tiền " + localStorage.message, "success");
+        localStorage.success = 0;
+    }
+   $scope.naptien = function(id){
+       console.log(id);
+       swal({
+           title: "Nạp tiền!",
+           text: "Vui lòng nhập vào số tiền bên dưới",
+           type: "input",
+           showCancelButton: true,
+           closeOnConfirm: false,
+           animation: "slide-from-top",
+           inputPlaceholder: "Ví dụ: 10000"
+       },
+       function(inputValue){
+           if (inputValue === false) return false;
+
+           if (inputValue === "" || isNaN(inputValue)) {
+               swal.showInputError("Bạn chưa nhập số tiền vào!");
+               return false
+           }
+           Service.nap_tien(id, inputValue).success(function(res){
+                localStorage.success = 1;
+                localStorage.message = inputValue;
+                location.reload();
+           });
+
+       });
+       //Service.nap_tien(id, amount).success(function(res){
+       //    console.log(res);
+       //})
+   }
+});
+app.filter('ngay', function() {
+    return function(value){
+        var today = new Date(value);
+        var dd = today.getDate();
+        var mm = today.getMonth()+1;
+        var yyyy = today.getFullYear();
+        return dd + '/' + mm + '/' + yyyy;
+        
+    }
+})
+app.filter('formatMoney', function() {
+    return function(value){
+        if(value == 0){
+          return 0;
+        }
+        //return value;
+        //value = value.toString().replace(/^\s+|\s+$/g,'');
+        return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+});
+app.filter('money', function() {
+    return function(value){
+        if(value == 0){
+          return 0;
+        }
+        //return value;
+        //value = value.toString().replace(/^\s+|\s+$/g,'');
+        return value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    }
+});
+app.controller('ThongKeController', function ($scope, Service, $timeout) {
+    
+    
+    Service.thong_ke('', '', localStorage.tinh_tp , localStorage.quan_huyen , localStorage.phuong_xa , localStorage.duong_pho ).success(function (res) {
+        if (res.data.length > 0){
+            console.log("ad");
+            console.log(res.data);
+            Morris.Area({
+                element: 'graph_area_main',
+                data: res.data,
+                xkey: 'ngay',
+                ykeys: ['gia'],
+                lineColors: ['#26B99A'],
+                labels: ['giá / m2'],
+                pointSize: 2,
+                hideHover: 'auto',
+                resize: true
+            });
+
+        }
+    })
+
+    Service.getListProvince().success(function(res){
+        $scope.data_province = res.data;
+    });
+
+    $scope.getDistrict = function(id){
+        Service.getListDistrict(id).success(function(res){
+            $scope.data_district = res.data;
+        })
+    };
+
+    $scope.getWard = function(id){
+        Service.getListWard(id).success(function(res){
+            $scope.data_ward = res.data;
+            $scope.data_street = res.data_street;
+        })
+    }
+
+    $scope.reloadpage = function () {
+        location.reload();
+    }
+    $scope.reload = false;
+    $scope.nam = 2017;
+    $scope.changeThongKe = function (nam, thang, tinh, huyen, phuong, duong) {
+        if(!nam){
+            nam = '';
+            thang = '';
+        }
+        if(!thang){
+            thang = '';
+        }
+        if(!tinh){
+            tinh = '';
+        }
+        if(!huyen){
+            huyen = '';
+        }
+        if(!phuong){
+            phuong = '';
+        }
+        if(!duong){
+            duong = '';
+        }
+        console.log(nam);
+        console.log(thang);
+        console.log(tinh);
+        console.log(huyen);
+        console.log(phuong);
+        console.log(duong);
+
+        Service.get_list_bds_thong_ke('', '', '', '', '', '').success(function(res){
+            $scope.list_bds = res.data;
+        })
+        Service.thong_ke(nam, thang, tinh, huyen, phuong, duong).success(function (res) {
+            $scope.reload = true;
+            if (res.data.length > 0){
+                console.log(res.data);
+                Morris.Area({
+                    element: 'graph_area',
+                    data: res.data,
+                    xkey: 'ngay',
+                    ykeys: ['gia'],
+                    lineColors: ['#26B99A'],
+                    labels: ['giá / m2'],
+                    pointSize: 2,
+                    hideHover: 'auto',
+                    resize: true
+                });
+
+            }
+        })
+
+    };
+
+
+});
+app.controller('DangTinController', function(Service, $scope, FileUploader, fileUpload){
+    if(localStorage.success == 1){
+        localStorage.success = 0;
+        swal("Thành công!", "Tin của bạn đã được đăng", "success");
+    }
+    Service.get_IP().success(function(res){
+        localStorage.IP = res.ip;
+    })
+
+    var uploader = $scope.uploader = new FileUploader({
+        url: urlUpload2 + "upload.php"
+    });
+
+    // FILTERS
+
+    uploader.filters.push({
+        name: 'imageFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    });
+
+    // uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+    //     console.info('onWhenAddingFileFailed', item, filter, options);
+    // };
+    // uploader.onAfterAddingFile = function(fileItem) {
+    //     console.info('onAfterAddingFile', fileItem);
+    // };
+    // uploader.onAfterAddingAll = function(addedFileItems) {
+    //     console.info('onAfterAddingAll', addedFileItems);
+    // };
+    // uploader.onBeforeUploadItem = function(item) {
+    //     console.info('onBeforeUploadItem', item);
+    // };
+    // uploader.onProgressItem = function(fileItem, progress) {
+    //     console.info('onProgressItem', fileItem, progress);
+    // };
+    // uploader.onProgressAll = function(progress) {
+    //     console.info('onProgressAll', progress);
+    // };
+    // uploader.onSuccessItem = function(fileItem, response, status, headers) {
+    //     console.info('onSuccessItem', fileItem, response, status, headers);
+    // };
+    // uploader.onErrorItem = function(fileItem, response, status, headers) {
+    //     console.info('onErrorItem', fileItem, response, status, headers);
+    // };
+    // uploader.onCancelItem = function(fileItem, response, status, headers) {
+    //     console.info('onCancelItem', fileItem, response, status, headers);
+    // };
+    // uploader.onCompleteItem = function(fileItem, response, status, headers) {
+    //     console.info('onCompleteItem', fileItem, response, status, headers);
+    // };
+    // uploader.onCompleteAll = function() {
+    //     console.info('onCompleteAll');
+    // };
+
+    $scope.tin1 = {};
+    $scope.tin1.don_vi_tinh = 0;
+    $scope.tin2 = {};
+    $scope.tin2.don_vi_tinh = 0;
+    $scope.a = Math.ceil(Math.random() * 10);
+    $scope.b = Math.ceil(Math.random() * 10);       
+    var c = $scope.a + $scope.b;
+    var id = 1;
+    var map;
+    var infowindow = new google.maps.InfoWindow();
+    var currentLocation;
+    var marker;
+
+    var gia_ngay = 0;
+    var gia_vat = 0;
+    var thanh_tien = 0;
+
+    // if(id==1){
+        //$cordovaGeolocation.getCurrentPosition({timeout: 10000, enableHighAccuracy: true, maximumAge: 0}).then(function(position){
+        
+            currentLocation = new google.maps.LatLng(10.000416, 105.756263);
+            
+            //navigator.geolocation.getCurrentPosition(showPosition);
+            //function showPosition(position){
+                //currentLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                var mapOptions = {
+                    center: currentLocation,
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                $scope.tin1.lat = 10.000416;
+                $scope.tin1.lng = 105.756263;
+                map = new google.maps.Map(document.getElementById("mapDangTin"), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: currentLocation,
+                    map: map,
+                    draggable: true
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent("Bạn đang chọn vị trí này");
+                    infowindow.open(map, marker);
+                });
+                google.maps.event.addListener(marker, 'dragend', function(evt){
+                    console.log(evt.latLng.lat() + " - " + evt.latLng.lng())
+                    document.getElementById('lat').value = evt.latLng.lat();
+                    document.getElementById('lng').value = evt.latLng.lng();
+                    $scope.tin1.lat = evt.latLng.lat();
+                    $scope.tin1.lng = evt.latLng.lng();
+                    //document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+                });
+            //}
+            
+        //});
+    // }
+    
+    
+    $scope.changeAddress = function(address){
+        
+        Service.get_location_from_google(address).success(function(res){
+            if (res.results.length == 0) {
+                //swal("Bạn đang chọn vị trí này");
+                $scope.tin1.lat = null;
+                $scope.tin1.lng = null;
+            }else{
+                $scope.tin1.lat = res.results[0].geometry.location.lat;
+                $scope.tin1.lng = res.results[0].geometry.location.lng;
+                currentLocation = new google.maps.LatLng(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng);
+                var mapOptions = {
+                    center: currentLocation,
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(document.getElementById("mapDangTin"), mapOptions);
+                var marker = new google.maps.Marker({
+                    position: map.getCenter(),
+                    map: map,
+                    draggable: true
+                });
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(address);
+                    infowindow.open(map, marker);
+                });
+            }
+            
+        }).error(function(err) {
+            swal("Không tìm thấy địa chỉ của bạn");
+            $scope.tin1.lat = null;
+            $scope.tin1.lng = null;
+            
+        })
+    }
+
+
+    Service.dangtin_getHinhThuc(id).success(function(res){
+        console.log(res);
+        $scope.hinh_thuc = res.data;
+    });
+
+    Service.getListProvince().success(function(res){
+        $scope.data_province = res.data;
+    })
+
+
+    var detailAddress = "";
+    var nameTinh;
+    var nameHuyen;
+    var namePhuong;
+    $scope.getDistrict = function(id){
+        var temp = $scope.data_province.filter(function(item) {
+          return item.provinceid === id;
+        })[0];
+        console.log(temp.name);
+        nameTinh = temp.name;
+        $scope.changeAddress(nameTinh);
+        $scope.tin1.address = nameTinh;
+        Service.getListDistrict(id).success(function(res){
+            $scope.data_district = res.data;
+            $scope.data_ward = [];
+            $scope.data_street = [];
+        })
+    }
+    $scope.getWard = function(id){
+        var temp = $scope.data_district.filter(function(item) {
+          return item.districtid === id;
+        })[0];
+        nameHuyen = temp.type + " " + temp.name + " " + nameTinh;
+        console.log(nameHuyen);
+        $scope.tin1.address = nameHuyen;
+        $scope.changeAddress(nameHuyen);
+        Service.getListWard(id).success(function(res){
+            $scope.data_ward = res.data;
+            $scope.data_street = res.data_street;
+        })
+    }
+
+    $scope.changeWard = function(id){
+        var temp = $scope.data_ward.filter(function(item) {
+          return item.wardid === id;
+        })[0];
+        namePhuong =  temp.type + " " + temp.name + " " + nameHuyen;
+        console.log(namePhuong);
+        $scope.tin1.address = namePhuong;
+        $scope.changeAddress(namePhuong);
+    }
+
+    $scope.changeStreet = function(id){
+        var temp = $scope.data_street.filter(function(item) {
+          return item.streetid === id;
+        })[0];
+        var nameAddress =  temp.type + " " + temp.name + " " + namePhuong;
+        console.log(nameAddress);
+        $scope.tin1.address = nameAddress;
+        $scope.changeAddress(nameAddress);
+    }
+
+    
+    
+
+    function check_captcha(d)
+    {
+        if (d == c) return true;        
+        return false;
+    }    
+
+    $scope.thanh_tien = 0;
+    $scope.vat = 0;
+    $scope.gia_ngay = 0;
+    $scope.gia_one_ngay = 0;
+    $scope.changeHinhThuc = function(id){
+        Service.dangtin_getInfoByHinhThuc(id).success(function(res){
+            console.log(res);
+            $scope.data_loai_tin = res.data_loai_tin;
+            $scope.data_loai_tin_vip = res.data_loai_tin_vip;
+
+            $scope.data_don_vi_tinh = res.data_don_vi_tinh;
+
+            $scope.tin1.don_vi_tinh = "0";
+            $scope.tin2.don_vi_tinh = "0";
+
+            $scope.data_tin_property = res.data_tin_property;
+            $scope.data_du_an = res.data_du_an;
+            console.log($scope.data_loai_tin_vip);
+            $scope.tin1.loai_tin_vip = res.data_loai_tin_vip[0].loaitin_vip_id;
+
+            $scope.gia_one_ngay = res.data_loai_tin_vip[0].gia_ngay;
+            gia_ngay = parseInt(res.data_loai_tin_vip[0].gia_ngay) * parseInt($scope.countDate);
+            gia_vat = gia_ngay / 100 * 10;
+            gia_thanh_tien = gia_ngay + gia_vat;
+            set_money(gia_ngay, gia_vat, gia_thanh_tien);
+        })
+    }
+
+    
+    $scope.changeLoaiTinRao = function(id){
+        $scope.gia_one_ngay = filterIt($scope.data_loai_tin_vip, id)[0].gia_ngay;
+        gia_ngay = parseInt(filterIt($scope.data_loai_tin_vip, id)[0].gia_ngay) * parseInt($scope.countDate)
+        gia_vat = parseInt(gia_ngay) / 100 * 10;
+        gia_thanh_tien = gia_ngay + gia_vat;
+        set_money(gia_ngay, gia_vat, gia_thanh_tien);
+    }
+
+    function filterIt(arr, searchKey) {
+      return arr.filter(function(obj) {
+        return Object.keys(obj).some(function(key) {
+          return obj['loaitin_vip_id'].includes(searchKey);
+        })
+      });
+    }
+
+    function set_money(value_ngay, value_vat, value_thanh_tien){
+        $scope.gia_ngay = formatMoney(value_ngay);
+        $scope.vat = formatMoney(value_vat);
+        $scope.thanh_tien = formatMoney(value_thanh_tien);
+    }
+
+    $scope.hinh = [];
+    function upload_hinh_tin_dang(){
+        $scope.list_img = [];
+        var url = urlUpload2 + "uploads/";
+        angular.forEach($scope.uploader.queue, function (value, key) {
+            $scope.list_img.push({path: url+value.file.name, fileName: value.file.name});
+        })
+        $scope.uploader.uploadAll();
+    }
+    $scope.testHinh = function(){
+        upload_hinh_tin_dang();
+    }
+    var checkMultiClick = 0;
+    $scope.dangTin1 = function(tin1, user_id, role){
+        var v = grecaptcha.getResponse();
+        if(v.length == 0)
+        {
+            swal("Thất bại", "Bạn hãy hoàn thành Captcha trước", "error");
+            
+            return false;
+        }
+        if($scope.uploader.queue.length > 5){
+            swal("Số lượng ảnh bạn chọn vượt quá mức cho phép");
+            return false;
+        }
+        if(tin1.title == undefined){
+            swal("Bạn chưa nhập tiêu đề");
+            return false;
+        }
+        if(tin1.hinh_thuc == undefined){
+            swal("Bạn chưa chọn hình thức");
+            return false;
+        }
+        if(tin1.loai == undefined){
+            swal("Bạn chưa chọn loại");
+            return false;
+        }
+        if(tin1.province == undefined){
+            swal("Bạn chưa chọn tỉnh thành phố");
+            return false;
+        }
+        if(tin1.district == undefined){
+            swal("Bạn chưa chọn quận huyện");
+            return false;
+        }
+        if(tin1.ward == undefined){
+            swal("Bạn chưa chọn phường xã");
+            return false;
+        }
+        if(tin1.address == undefined){
+            swal("Bạn chưa nhập địa chỉ");
+            return false;
+        }
+        if(tin1.mo_ta == undefined){
+            swal("Bạn chưa nhập mô tả");
+            return false;
+        }
+        if(tin1.contact_phone == undefined){
+            swal("Bạn chưa nhập số điện thoại liên hệ");
+            return false;
+        }
+    
+        if(user_id == 0){
+            user_id = localStorage.IP;
+        }
+        var giatong = parseFloat($scope.gia_one_ngay) * parseFloat($scope.countDate) + (parseFloat($scope.gia_one_ngay) * parseFloat($scope.countDate) * 10 / 100);
+        // console.log(tin1);
+        // console.log(tin1.hinh_thuc);
+        // console.log(getDataProperty());
+        
+
+        checkMultiClick++;
+        if(checkMultiClick == 1){
+            upload_hinh_tin_dang();
+            Service.dangtin(user_id, role, tin1.hinh_thuc, tin1.loai, tin1.du_an, tin1.title, tin1.province, tin1.district, tin1.ward, tin1.street, tin1.address, tin1.lat, tin1.lng, tin1.dien_tich, tin1.gia, giatong, tin1.don_vi_tinh, tin1.mo_ta, tin1.contact_name, tin1.contact_phone, tin1.contact_email, tin1.contact_address, tin1.contact_facebook, getDataProperty(), tin1.loai_tin_vip, tin1.date_start, tin1.date_end, JSON.stringify($scope.list_img)).success(function(res){
+                if(res.status == 200){
+                    
+                    localStorage.success = 1;
+                    location.reload();
+                    //swal(JSON.stringify($scope.list_img));
+                    
+                    // swal(res.message);
+                    // $state.go('home');
+                }else{
+                    swal("Thất bại", res.message, "error");
+                }
+                
+            });
+        }
+        
+        
+    }
+
+    $scope.dangTin2 = function(tin2){
+        if(tin2.title == undefined){
+            swal("Bạn chưa nhập tiêu đề");
+            return false;
+        }
+        if(tin2.hinh_thuc == undefined){
+            swal("Bạn chưa chọn hình thức");
+            return false;
+        }
+        if(tin2.loai == undefined){
+            swal("Bạn chưa chọn loại");
+            return false;
+        }
+        if(tin2.province == undefined){
+            swal("Bạn chưa chọn tỉnh thành phố");
+            return false;
+        }
+        if(tin2.district == undefined){
+            swal("Bạn chưa chọn quận huyện");
+            return false;
+        }
+        if(tin2.address == undefined){
+            swal("Bạn chưa nhập địa chỉ");
+            return false;
+        }
+        if(tin2.mo_ta == undefined){
+            swal("Bạn chưa nhập nội dung tin đăng");
+            return false;
+        }
+        if(tin2.contact_phone == undefined){
+            swal("Bạn chưa nhập số điện thoại liên hệ");
+            return false;
+        }
+
+        tin2.lat = '';
+        tin2.lng = '';
+        
+        var user_id = localStorage.IP;
+        if(localStorage.statusLogin){
+            user_id = localStorage.user_id;
+        }
+        if(check_captcha(tin2.bao_mat)){
+            console.log("true");
+            Service.dangtin(user_id, localStorage.user_role_id, tin2.hinh_thuc, tin2.loai, tin2.du_an, tin2.title, tin2.province, tin2.district, tin2.ward, tin2.street, tin2.address, tin2.lat, tin2.lng, tin2.dien_tich, tin2.gia, tin2.gia, tin2.don_vi_tinh, tin2.mo_ta, tin2.contact_name, tin2.contact_phone, tin2.contact_email, tin2.contact_address, tin2.contact_facebook, '[]', tin2.loai_tin_vip, tin2.date_start_temp, tin2.date_end_temp, '[]').success(function(res){
+                if(res.status == 200){
+                    swal(res.message)
+                    $state.go('home');
+                }
+                
+            });
+        }else{
+            swal("Mã bảo mật không đúng");
+            $scope.a = Math.ceil(Math.random() * 10);
+            $scope.b = Math.ceil(Math.random() * 10);  
+            c = $scope.a + $scope.b;
+        }
+    }
+
+
+    var linkApiProperty = '';
+    var getValueProperty = '';
+    var i = 0;
+    function getDataProperty(){
+        if($scope.data_tin_property.length == 0){
+            return '';
+        }
+        linkApiProperty = '[';
+        i = 0;
+        angular.forEach($scope.data_tin_property, function(index, element) {
+            getValueProperty = document.getElementById("tin_property_"+ index.tin_property_id).value;
+            linkApiProperty += "{\"tin_property_id\":\"" + index.tin_property_id + "\", \"value\":\"" + getValueProperty + "\"},";
+            i++;
+        });
+        return linkApiProperty.substring(0, linkApiProperty.length - 1) + "]";
+    }
+
+    $scope.countDate = 0;
+    $scope.date_start = new Date();
+    $scope.date_end = new Date(2050, 10 , 10);
+
+    var pickDate_End = {};
+    var pickDate_Start = {
+        callback: function (val) {
+            $scope.tin1.date_start_temp = formatNgayTemp(val);
+            $scope.tin1.date_start = formatNgay(val);
+            $scope.tin1.date_end = null;
+            $scope.tin1.date_end_temp = null;
+            $scope.date_start = new Date(val);
+            pickDate_End = {
+                callback: function (val2) { 
+                    $scope.tin1.date_end_temp = formatNgayTemp(val2);
+                    $scope.tin1.date_end = formatNgay(val2);
+                    $scope.countDate = Math.round(Math.abs((val - val2)/(24*60*60*1000))) + 1;
+
+                    gia_ngay = parseInt($scope.gia_one_ngay) * parseInt($scope.countDate);
+                    gia_vat = gia_ngay / 100 * 10;
+                    gia_thanh_tien = gia_ngay + gia_vat;
+                    set_money(gia_ngay, gia_vat, gia_thanh_tien);
+                },
+                from: new Date(val),
+                to: new Date(2050, 10, 30),
+                titleLabel: 'Đến ngày',
+                closeOnSelect: true
+            };
+            
+        },
+        from: new Date(),
+        to: new Date(2050, 10, 30),
+        titleLabel: 'Bắt đầu từ ngày',
+        closeOnSelect: true
+    };
+
+    
+
+    var pickDate_End2 = {};
+    var pickDate_Start2 = {
+        callback: function (val) {
+            $scope.tin2.date_start_temp = formatNgayTemp(val);
+            $scope.tin2.date_start = formatNgay(val);
+            $scope.tin2.date_end = null;
+            $scope.tin2.date_end_temp = null;
+            pickDate_End2 = {
+                callback: function (val2) { 
+                    $scope.tin2.date_end_temp = formatNgayTemp(val2);
+                    $scope.tin2.date_end = formatNgay(val2);
+                },
+                from: new Date(val),
+                to: new Date(2050, 10, 30),
+                titleLabel: 'Đến ngày',
+                closeOnSelect: true
+            };
+            
+        },
+        from: new Date(),
+        to: new Date(2050, 10, 30),
+        titleLabel: 'Bắt đầu từ ngày',
+        closeOnSelect: true
+    };
+
+    $scope.changeDateStart = function(val){
+        console.log(val);
+        $scope.tin1.date_start_temp = formatNgayTemp(val);
+        // $scope.tin1.date_start = formatNgay(val);
+        $scope.tin1.date_end = null;
+        $scope.tin1.date_end_temp = null;
+        $scope.date_start = new Date(val);
+    };
+    $scope.changeDateEnd = function(val2){
+        if(!$scope.tin1.date_start){
+            $scope.tin1.date_end = null;
+            console.log("Bạn chưa chọn ngày bắt đầu");
+            swal("Bạn chưa chọn ngày bắt đầu");
+            return false;
+        }
+        if((val2 - $scope.tin1.date_start) < 0){
+            $scope.tin1.date_end = null;
+            swal("Bạn phải chọn ngày lớn hơn ngày bắt đầu");
+            return false;
+        }
+        $scope.tin1.date_end_temp = formatNgayTemp(val2);
+        //$scope.tin1.date_end = formatNgay(val2);
+        $scope.countDate = Math.round(Math.abs(($scope.tin1.date_start - val2)/(24*60*60*1000))) + 1;
+        gia_ngay = parseInt($scope.gia_one_ngay) * parseInt($scope.countDate);
+        gia_vat = gia_ngay / 100 * 10;
+        gia_thanh_tien = gia_ngay + gia_vat;
+        set_money(gia_ngay, gia_vat, gia_thanh_tien);
+        //$scope.tin1.date_end = formatNgay(val);
+    };
+
+    $scope.openDatePickerStart = function(){
+        console.log("hello");
+      ionicDatePicker.openDatePicker(pickDate_Start);
+    };
+    $scope.openDatePickerEnd = function(){
+
+        if(!$scope.tin1.date_start){
+            console.log("Bạn chưa chọn ngày bắt đầu");
+            swal("Bạn chưa chọn ngày bắt đầu");
+            return false;
+        }
+        ionicDatePicker.openDatePicker(pickDate_End);
+    };
+
+    $scope.openDatePickerStart2 = function(){
+      ionicDatePicker.openDatePicker(pickDate_Start2);
+    };
+    $scope.openDatePickerEnd2 = function(){
+
+        if(!$scope.tin2.date_start){
+            console.log("Bạn chưa chọn ngày bắt đầu");
+            swal("Bạn chưa chọn ngày bắt đầu");
+            return false;
+        }
+        ionicDatePicker.openDatePicker(pickDate_End2);
+    };
+
+
+    $scope.countImg = 0;
+    $scope.list_img = [];
+    //$scope.list_img.push({path:'http://image-us.24h.com.vn/upload/1-2017/images/2017-01-01/1483237729-148323148262849-hot-girl-tuoi-dau--1-.jpg', fileName: 'hotgirl.jpg'});
+    // $scope.list_img.push('http://image-us.24h.com.vn/upload/1-2017/images/2017-01-01/1483237729-148323148262849-hot-girl-tuoi-dau--1-.jpg');
+    // $scope.list_img.push('https://s-media-cache-ak0.pinimg.com/736x/d4/e4/ea/d4e4ea4504747a5207814334b8232fcd.jpg');
+    // $scope.list_img.push('http://i1291.photobucket.com/albums/b553/ws88marketing/hotgirl/1_zps6a45c9d2.jpg');
+    // $scope.list_img.push('https://s-media-cache-ak0.pinimg.com/236x/87/db/60/87db6008251bc1ad0ffc917c5068436a.jpg');
+    // $scope.list_img.push('http://img.tintuc.vietgiaitri.com/2017/5/8/cuoc-song-hau-ly-hon-cua-4-hot-girl-dinh-dam-mot-thoi-b036a9.jpg');
+    $scope.chooseImage = function() {
+        var lengthImage = 5 - parseInt($scope.list_img);
+        if(lengthImage == 0){
+            swal("Bạn chỉ được upload tối đa 5 hình ảnh");
+            return false;
+        }
+    
+
+    };
+
+    $scope.pathForImage = function(image) {
+      if (image === null) {
+        return '';
+      } else {
+        return cordova.file.dataDirectory + image;
+      }
+    };
+
+    $scope.removeImage = function(image) {
+        $scope.list_img = $scope.list_img.filter(function(el) {
+            return el.path !== image.trim();
+        });
+        console.log($scope.list_img);
+    };
+    
+
+});
+app.controller('SearchHomeController', function($scope, Service, $location){
+
+    $scope.search = {};
+    $scope.search.loai = '';
+    Service.getListProvince().success(function(res){
+        $scope.data_province = res.data;
+    });
+
+    $scope.getDistrict = function(id){
+        Service.getListDistrict(id).success(function(res){
+            $scope.data_district = res.data;
+        })
+    };
+    $scope.getWard = function(id){
+        Service.getListWard(id).success(function(res){
+            $scope.data_ward = res.data;
+            $scope.data_street = res.data_street;
+        })
+    }
+
+    $scope.tim_kiem = function(nhom, search, map){
+    	search.nhom = nhom;
+    	localStorage.search = JSON.stringify(search);
+    	localStorage.map = map;
+    }
+
+
+    
+
+    $scope.search.type_search = 1;
+
+});
+app.controller('SearchController', function($scope, Service, $timeout, $compile ){
+ 	var map;
+    var markers = [];
+    var currentLocation;
+    var infowindow = new google.maps.InfoWindow();
+    
+    var marker;
+
+    var bds = {};
+    if(localStorage.search){
+        bds = JSON.parse(localStorage.search);
+    }
+    console.log(bds);
+    var orderby = 1;
+
+    if(localStorage.map == '1'){
+    	$scope.showMap = true; 
+    }
+
+    Service.get_list_bds_2(bds.nhom, bds.hinh_thuc, bds.loai_tin, bds.du_an, bds.title, bds.province, bds.district, bds.ward, bds.street, bds.description_dientich, bds.description_gia, 0, 1, orderby).success(function(res){
+        console.log(res);
+        $scope.list_bds = res.data;
+        angular.forEach(res.data, function(index, element) {
+            createMarker(index.tin_id, index.coor_lat, index.coor_long, index.title_tin, index.gia, index.ten_donvi, index.dientich, index.district, index.province);
+        });
+        if(res.data.length == 0){
+            swal('Không có tin rao phù hợp với tiêu chí đã chọn');
+        }
+    })
+    if(bds.nhom){
+	    Service.dangtin_getHinhThuc(bds.nhom).success(function(res){
+	        $scope.data_hinh_thuc = res.data;
+	        if(bds.hinh_thuc){
+	            Service.dangtin_getInfoByHinhThuc(bds.hinh_thuc).success(function(res2){
+	                $scope.data_loai_tin = res2.data_loai_tin;
+	                $scope.data_du_an = res2.data_du_an;
+	            })
+	        }
+	    })
+	}
+
+    if(bds.province){
+        Service.getListDistrict(bds.province).success(function(res){
+            $scope.data_district = res.data;
+        })
+        
+        Service.dangtin_getInfoByHinhThuc(bds.province).success(function(res){
+            $scope.data_du_an = res.data_du_an;
+        })
+    }
+    if(bds.district){
+        Service.getListWard(bds.district).success(function(res){
+            console.log(res);
+            $scope.data_ward = res.data;
+            $scope.data_street = res.data_street;
+        })  
+    }
+    Service.getListProvince().success(function(res){
+        $scope.data_province = res.data;
+    })
+
+    $timeout( function(){ $scope.search = bds; }, 2000);
+    
+    $scope.changeTypeSearch = function(id){
+        Service.dangtin_getHinhThuc(id).success(function(res){
+            $scope.data_hinh_thuc = res.data;
+            if(bds.hinh_thuc){
+                Service.dangtin_getInfoByHinhThuc(bds.hinh_thuc).success(function(res2){
+                    $scope.data_loai_tin = res2.data_loai_tin;
+                    $scope.data_du_an = res2.data_du_an;
+                })
+            }
+        })
+    }
+    $scope.changeHinhThuc = function(id){
+        Service.dangtin_getInfoByHinhThuc(id).success(function(res){
+            $scope.data_loai_tin = res.data_loai_tin;
+            $scope.data_loai_tin_vip = res.data_loai_tin_vip;
+
+            $scope.data_don_vi_tinh = res.data_don_vi_tinh;
+
+            $scope.data_tin_property = res.data_tin_property;
+            $scope.data_du_an = res.data_du_an;
+        })
+    }
+
+    $scope.getDistrict = function(id){
+        Service.getListDistrict(id).success(function(res){
+            $scope.data_district = res.data;
+        })
+    }
+
+    $scope.getWard = function(id){
+        Service.getListWard(id).success(function(res){
+            $scope.data_ward = res.data;
+            $scope.data_street = res.data_street;
+        })
+    }
+
+    $scope.tim_kiem = function(search){
+        if(search == undefined){
+            localStorage.search = null;
+        }else{
+            localStorage.search = JSON.stringify(search);
+        }
+
+        Service.get_list_bds_2(search.nhom, search.hinh_thuc, search.loai_tin, search.du_an, search.title, search.province, search.district, search.ward, search.street, search.description_dientich, search.description_gia, 0, 1, orderby).success(function(res){
+            $scope.list_bds = res.data;
+            clearMarker();
+            angular.forEach(res.data, function(index, element) {
+                createMarker(index.tin_id, index.coor_lat, index.coor_long, index.title_tin, index.gia, index.ten_donvi, index.dientich, index.district, index.province);
+            });
+            i = 0;
+        })
+    }
+
+
+    currentLocation = new google.maps.LatLng(10.000416, 105.756263);
+    var mapOptions = {
+        center: currentLocation,
+        zoom: 8,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({
+        position: map.getCenter(),
+        map: map,
+        draggable: false,
+        icon : "img/marker/employment.png",
+        zIndex: 9999
+    });
+    google.maps.event.addListener(marker, "click", function (evt) {
+        infowindow.setContent("Bạn đang ở đây");
+        infowindow.open(map, marker);
+    });
+
+    function createMarker(tin_id, coor_lat, coor_long, title_tin, gia, ten_donvi, dientich, district, province) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(coor_lat, coor_long),
+          icon: 'img/marker/default.png'
+        });
+        if(!ten_donvi){ten_donvi = '';}
+        markers.push(marker);
+        google.maps.event.addListener(marker, 'click', function() {
+            var content = "<div ng-click=\"chiTietBDS("+tin_id+")\">"
+                + "<img class='imgMap' src='https://thongtin.land/logo-thongtinland.jpg' />"
+                + "<p class='titleMap'><a target='_blank' href='/bat-dong-san/"+tin_id+"/bat-dong-san'>" + title_tin + "</a></p>"
+                + "<p class='giaMap'>" + formatMoney(gia) + " " + ten_donvi + " - " + formatMoney(dientich) + "m<sup>2</sup></p>"
+                + district + " - " + province + "</div>";
+            infowindow.setContent($compile(content)($scope)[0]);
+            infowindow.open(map, this);
+            
+            // google.maps.event.addListener(infowindow2, 'click', function(){
+            //     console.log('asd');
+            //     $scope.chiTietBDS(tin_id);
+            // });
+            
+        });
+    }
+
+    function clearMarker(){
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+    $scope.chiTietBDS = function(){
+
+    }
+
+
+
+
+});
+app.controller('LichSuThanhToanController', function($scope, $http, Service) {
+    Service.get_lich_su_thanh_toan(localStorage.user_id, 0).success(function(res){
+        console.log(res);
+        $scope.list_tt = res.data;
+    })
+});
+app.controller('LichSuNapTienController', function($scope, $http, Service) {
+    Service.get_lich_su_nap_tien(localStorage.user_id, 0).success(function(res){
+        console.log(res);
+        $scope.list_nt = res.data;
+    })
+});
+app.controller('ListDuAnController', function($scope, $http, Service) {
+    var i = 0;
+
+    var temp_province;
+    var temp_district;
+    var temp_ward;
+    Service.get_list_du_an(localStorage.categoryDuAn, '', '', '', 0).success(function(res){
+        $scope.list_du_an = res.data;
+    })
+
+    $scope.da = {};
+    $scope.searchDuAn = function(id, province, district, ward){
+        i = 0;
+        temp_province = province;
+        temp_district = district;
+        temp_ward = ward;
+        $scope.xemthem = "Xem thêm";
+        Service.get_list_du_an(id, province, district, ward, 0).success(function(res){
+            $scope.list_du_an = res.data;
+        })
+    }
+    
+
+    $scope.xemthem = "Xem thêm";
+    $scope.list_du_an = [];
+    $scope.loadmore = function(id){
+        i++;
+        Service.get_list_du_an(id, temp_province, temp_district, temp_ward, i).success(function(res){
+            $scope.list_du_an = $scope.list_du_an.concat(res.data);
+            console.log(res.data);
+            if(res.data.length == 0){
+                $scope.xemthem = "Đã tải hết dự án";
+            }
+        });
+        
+    }
+});
+app.controller('DuAnController', function($scope){
+    var map;
+    var markers = [];
+    var currentLocation;
+    var infowindow = new google.maps.InfoWindow();
+    var cityCircle;
+    var marker;
+
+
+    currentLocation = new google.maps.LatLng(localStorage.lat, localStorage.long);
+    var mapOptions = {
+        center: currentLocation,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    marker = new google.maps.Marker({
+        position: currentLocation,
+        map: map,
+        draggable: false,
+        zIndex: 9999
+    });
+
+    // google.maps.event.addListener(marker, "click", function (evt) {
+    //     infowindow.setContent(localStorage.title_lienhe);
+    //     infowindow.open(map, marker);
+    // });
+
+    var sunCircle = {
+        strokeColor: "#00ff00",
+        strokeOpacity: 0.5,
+        strokeWeight: 2,
+        fillColor: "#00ff00",
+        fillOpacity: 0.1,
+        map: map,
+        center: currentLocation,
+        radius: 1000
+    };
+
+    cityCircle = new google.maps.Circle(sunCircle);
+    cityCircle.bindTo('center', marker, 'position');
+    loadDataNearBySearch(1000, '');
+    $scope.info = {};
+    $scope.info.rangeRadius = 1000;
+
+    $scope.locRadius = function(info){
+        clearMarker();
+        sunCircle = {
+            strokeColor: "#00ff00",
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: "#00ff00",
+            fillOpacity: 0.1,
+            map: map,
+            center: currentLocation,
+            radius: parseInt(info.rangeRadius) // in meters
+        };
+        cityCircle = new google.maps.Circle(sunCircle)
+        cityCircle.bindTo('center', marker, 'position');
+
+        var banKinh = parseInt(info.rangeRadius);
+        
+        if(info.school){
+            loadDataNearBySearch(banKinh, 'school');
+            loadDataNearBySearch(banKinh, 'university');
+        }
+        if(info.hospital){
+            loadDataNearBySearch(banKinh, 'hospital');
+        }
+        if(info.local_government_office){
+            loadDataNearBySearch(banKinh, 'local_government_office');
+        }
+        if(info.cafe){
+            loadDataNearBySearch(banKinh, 'cafe');
+        }
+        if(info.spa){
+            loadDataNearBySearch(banKinh, 'spa');
+            loadDataNearBySearch(banKinh, 'beauty_salon');
+        }
+        if(info.gym){
+            loadDataNearBySearch(banKinh, 'gym');
+        }
+        if(info.convenience_store){
+            loadDataNearBySearch(banKinh, 'convenience_store');
+        }
+        if(info.bus_station){
+            loadDataNearBySearch(banKinh, 'bus_station');
+        }
+        if(info.atm){
+            loadDataNearBySearch(banKinh, 'atm');
+            loadDataNearBySearch(banKinh, 'bank');
+        }
+        if(info.restaurant){
+            loadDataNearBySearch(banKinh, 'restaurant');
+        }
+        if(info.hotel){
+            loadDataNearBySearch(banKinh, 'hotel');
+        }
+        //$scope.modalBoLocRadius.hide();
+    }
+
+    function loadDataNearBySearch(radius, value){
+        var requestRadius = {
+            location: currentLocation,
+            radius: radius,
+            keyword: value
+        };
+        var serviceRadius = new google.maps.places.PlacesService(map);
+        localStorage.iconMarker = value;
+        serviceRadius.nearbySearch(requestRadius, callback);
+    }
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+                switch (results[i].types[0]){
+                    case "school":
+                    case "university":
+                    case "library":
+                        createMarker(results[i], "/realty/public/img/marker/schools.png");
+                        break;
+                        
+                    case "hospital":
+                        createMarker(results[i], "/realty/public/img/marker/health-medical.png");
+                        break;
+
+                    case "accounting":
+                    case "local_government_office":
+                        createMarker(results[i], "/realty/public/img/marker/government.png");
+                        break;
+
+                    case "cafe":
+                        createMarker(results[i], "/realty/public/img/marker/cafe.png");
+                        break;
+
+                    case "spa":
+                    case "hair_care":
+                    case "beauty_salon":
+                        createMarker(results[i], "/realty/public/img/marker/massage-therapy.png");
+                        break;
+
+                    case "gym":
+                        createMarker(results[i], "/realty/public/img/marker/sports.png");
+                        break;
+
+                    case "convenience_store":
+                    case "grocery_or_supermarket":
+                        createMarker(results[i], "/realty/public/img/marker/shopping.png");
+                        break;
+
+                    case "bus_station":
+                    case "travel_agency":
+                        createMarker(results[i], "/realty/public/img/marker/transport.png");
+                        break;
+
+                    case "atm":
+                    case "bank":
+                        createMarker(results[i], "/realty/public/img/marker/financial-services.png");
+                        break;
+
+                    case "restaurant":
+                        createMarker(results[i], "/realty/public/img/marker/restaurants.png");
+                        break;
+
+                    case "hotel":
+                    case "lodging":
+                        createMarker(results[i], "/realty/public/img/marker/hotels.png");
+                        break;
+
+                    default:
+                        createMarker(results[i], "/realty/public/img/marker/default.png");
+                        break;
+                }
+                
+            }
+        }
+    }
+
+    function createMarker(place, icon) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          icon: icon
+        });
+        markers.push(marker);
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent("<b>" + place.name + "</b><br/>" + place.vicinity);
+          infowindow.open(map, this);
+        });
+    }
+
+    function clearMarker(){
+        cityCircle.setMap(null);
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(null);
+        }
+        markers = [];
+    }
+});
+app.controller('DuAnAdminController', function($scope){
+    var map;
+    var markers = [];
+    var currentLocation;
+    var marker;
+    navigator.geolocation.getCurrentPosition(function(position){
+        currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var mapOptions = {
+            center: currentLocation,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        marker = new google.maps.Marker({
+            position: currentLocation,
+            map: map,
+            draggable: true,
+            zIndex: 9999
+        });
+        google.maps.event.addListener(marker, 'dragend', function(evt){
+            console.log(evt.latLng.lat() + " - " + evt.latLng.lng())
+            document.getElementById('lat').value = evt.latLng.lat();
+            document.getElementById('lng').value = evt.latLng.lng();
+            //document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+        });
+    });
+
+    
+    //currentLocation = new google.maps.LatLng(10.000701, 105.7541085);
+    
+    
+});
+app.controller('MoiGioiController', function(Service, $scope, $location){
+    $scope.mg = {};
+    $scope.mg.district = '';
+    Service.get_list_moi_gioi('', '', '', 0).success(function(res){
+        console.log(res.data);
+        $scope.list_mg = res.data;
+    })
+
+    $scope.timKiemMG = function(){
+        $scope.xemthem = "Xem thêm";
+        i = 0;
+        Service.get_list_moi_gioi($scope.mg.province, $scope.mg.district, $scope.mg.ward, i).success(function(res){
+            $scope.list_mg = res.data;          
+        })
+    }
+
+    $scope.chiTietMoiGioi = function(id){
+        localStorage.idMG = id;
+        $location.path('/nha-moi-gioi/' + id);
+    }
+
+    $scope.xemthem = "Xem thêm";
+    var i = 0;
+    $scope.loadMoreMG = function(){
+        console.log($scope.mg.province+" "+$scope.mg.district+" "+$scope.mg.ward);
+        i++;
+        Service.get_list_moi_gioi($scope.mg.province, $scope.mg.district, $scope.mg.ward, i).success(function(res){
+            if (res.data.length == 0) {
+                $scope.xemthem = "Đã tải hết danh sách nhà môi giới";
+            } else {
+                $scope.list_mg = $scope.list_mg.concat(res.data);
+            }            
+        })
+    }
+
+});
+app.controller('MoiGioiChiTietController', function(Service, $scope, $location){
+    var id = localStorage.idMG;
+    console.log(id);
+    $scope.detailMG = {};
+    Service.get_detail_moi_gioi(id).success(function(res){
+        console.log(res);
+        $scope.detailMG = res.data;
+        $scope.list_detail = res.data_property;
+    })
+
+    $scope.ketban = function(){
+        Service.ket_ban(localStorage.user_id, id).success(function(res){
+            if(res.status == 200){
+                swal("Thành công!", "Vui lòng chờ chấp thuận từ người này", "success");
+            }else{
+                swal("Thất bại!", res.message, "error");
+            }
+            
+        })
+    }
+
+});
+app.controller('FriendController', function(Service, $scope, $location){
+
+    if(localStorage.success == 1){
+        localStorage.success = 0;
+        swal("Thành công!", "Đã thêm người này vào danh sách bạn bè của bạn", "success");
+    }
+    if(localStorage.success == 3){
+        localStorage.success = 0;
+        swal("Thành công!", "Đã hủy bạn bè", "success");
+    }
+
+    Service.get_list_friend(localStorage.user_id).success(function(res){
+        console.log(res);
+        $scope.list_friend = res.data;
+    })
+
+    Service.get_list_friend_pending(localStorage.user_id, 0).success(function(res){
+        $scope.list_friend_pending = res.data;
+    })
+
+     Service.get_list_friend_pending(localStorage.user_id, 1).success(function(res){
+        $scope.list_friend_invitation = res.data;
+    })
+    $scope.chapnhanbanbe = function(id){
+        Service.change_status_relationship(id, 1).success(function(res){
+            localStorage.success = 1
+            location.reload();
+        })
+    }
+
+    $scope.xoabanbe = function(id){
+        swal({
+          title: "Xóa bạn bè !",
+          text: "Bạn có chắc chắn là muốn xóa bạn bè với người này không ?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Vâng, tôi chắc chắn!",
+          closeOnConfirm: false
+        },
+        function(){
+            Service.change_status_relationship(id, 3).success(function(res){
+                localStorage.success = 3
+                location.reload();
+            })
+        });
+    }
+
+    $scope.huybanbe = function(id){
+        swal({
+          title: "Hủy bạn bè !",
+          text: "Đối phương vẫn chưa chấp nhận lời mời, bạn có muốn hủy ?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Vâng, tôi chắc chắn!",
+          closeOnConfirm: false
+        },
+        function(){
+            Service.change_status_relationship(id, 3).success(function(res){
+                localStorage.success = 3
+                location.reload();
+            })
+        });
+        
+    }
+    $scope.tuchoibanbe = function(id){
+        swal({
+          title: "Từ chối bạn bè !",
+          text: "Bạn có chắc muốn từ chối lời mời kết bạn này ?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Vâng, tôi chắc chắn!",
+          closeOnConfirm: false
+        },
+        function(){
+            Service.change_status_relationship(id, 3).success(function(res){
+                localStorage.success = 3
+                location.reload();
+            })
+        });
+        
+    }
+});
+app.controller('UserTinDangController', function(Service, $scope){
+    var friend = {};
+    Service.get_list_friend(localStorage.user_id).success(function(res){
+        angular.forEach(res.data, function (value, key) {
+            friend[value.id] = value.hoten;
+        })
+    })
+
+    $scope.share = function(id){
+        swal({
+            title: 'Chia sẻ tin đăng',
+            input: 'select',
+            inputOptions: friend,
+            inputPlaceholder: 'Chọn bạn để chia sẻ',
+            showCancelButton: true,
+        }).then(function (user) {
+            Service.share_tin_bds(localStorage.user_id, user, id).success(function(res){
+                swal("Thành công!", "Tin đã được chia sẻ", "success");
+            });
+            
+        })
+        
+    }
+});

@@ -27,6 +27,7 @@ Route::namespace('map')->group(function () {
     Route::get('dashboard/maps/create', 'MapController@create')->name('map.create');
     Route::get('dashboard/maps/create2', 'MapController@create2')->name('map.create2');
     Route::post('dashboard/maps/create2', 'MapController@create2ajax')->name('map.create2ajax');
+    Route::post('dashboard/maps/create', 'MapController@fetchMap')->name('map.fetchMap');
     Route::get('dashboard/maps/edit/{id}', 'MapController@edit')->name('map.edit');
     Route::post('dashboard/maps', 'MapController@store')->name('map.store');
     Route::put('dashboard/maps', 'MapController@update')->name('map.update');

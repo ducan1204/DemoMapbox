@@ -32,6 +32,12 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <div class="row">
+            <div class="col-12" style="left: 50%">
+                {{$maps->links()}}
+            </div>
+        </div>
     </div>
 </div>
 @endsection

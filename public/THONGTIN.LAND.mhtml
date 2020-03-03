@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://thongtin.land/#/nhadatchothue -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>THONGTIN.LAND</title>
+
+    <link rel="shortcut icon" href="https://thongtin.land/favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./THONGTIN.LAND_files/font-awesome.min.css">
+    <link href="./THONGTIN.LAND_files/sweetalert.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700"> -->
+
+    <!-- Styles -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link href="./THONGTIN.LAND_files/app.css" rel="stylesheet">
+    <link href="./THONGTIN.LAND_files/select2.css" rel="stylesheet">
+<!-- <link href="https://thongtin.land/js/ionic.min.css" rel="stylesheet"> -->
+    <script src="./THONGTIN.LAND_files/es5-shim.min.js.download"></script>
+    <script src="./THONGTIN.LAND_files/es5-sham.min.js.download"></script>
+    <script async="" defer="" src="./THONGTIN.LAND_files/js"></script>
+
+    <script src="./THONGTIN.LAND_files/jquery.min.js.download" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    <script src="./THONGTIN.LAND_files/console-sham.min.js.download"></script>
+    <script src="./THONGTIN.LAND_files/bootstrap.min.js.download" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="./THONGTIN.LAND_files/responsiveslides.js.download"></script>
+    <script src="./THONGTIN.LAND_files/select2.min.js.download"></script>
+    <link rel="stylesheet" href="./THONGTIN.LAND_files/lightslider.css">
+    <script src="./THONGTIN.LAND_files/lightslider.js.download"></script>
+
+
+    <script src="./THONGTIN.LAND_files/angular.min.js.download"></script>
+    <script src="./THONGTIN.LAND_files/angular-file-upload.min.js.download"></script>
+<!-- <script src="https://thongtin.land/js/angular-captcha.min.js"></script> -->
+<!-- <script src="https://thongtin.land/js/ng-cordova.min.js"></script> -->
+<!-- <script src="https://thongtin.land/js/datepicker.js"></script> -->
+<!-- <script src="https://thongtin.land/autocomplete/jquery.autocomplete.js"></script> -->
+    <script src="./THONGTIN.LAND_files/app.js.download"></script>
+    <script src="./THONGTIN.LAND_files/directives.js.download"></script>
+    <script src="./THONGTIN.LAND_files/share.js.download"></script>
+    <style>
+        .dropbtn {
+            background-color: #4473C3;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #4473C3;
+            color: #00AEE4;
+        }
+    </style>
+        
+    <style>
+        p.rut-gon {
+            white-space: nowrap;
+            width: 210px;
+            height: 18px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    </style>
+<script type="text/javascript" charset="UTF-8" src="./THONGTIN.LAND_files/common.js.download"></script><script type="text/javascript" charset="UTF-8" src="./THONGTIN.LAND_files/util.js.download"></script></head>
+<body id="app-layout" ng-app="realty" ng-controller="AppController" class="ng-scope">
+
+<div style="text-align: right; padding: 5px 0 5px 0">
+    <div class="container">
+        <!--  <span class="menu-head">
+             <a href=""><i class="fa fa-phone"></i> (+84) 923 223 144</a>
+         </span>
+         <span class="menu-head">
+             <a href=""><i class="fa fa-map-marker"></i> 123 Abc Xyz Def</a>
+         </span>
+         <span class="menu-head">
+             <a href=""><i class="fa fa-envelope"></i> support@support.com</a>
+         </span> -->
+        <span class="menu-head pull-right">
+
+                            <a href="https://thongtin.land/login">Đăng nhập</a> /
+                <a href="https://thongtin.land/register">Đăng ký</a>
+                    </span>
+        
+            <!-- <span>
+            <a class="btn btn-md btn-primary" href="https://thongtin.land/dang-tin-ngay"><i class="fa fa-plus"></i> Đăng tin ngay</a>
+        </span> -->
+            </div>
+</div>
+<nav class="navbar navbar-default">
+    <div class="container" style="background: #4473c3; padding: 0px !important;">
+
+        <div class="navbar-header">
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse" style="padding: 0px !important;">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                <li>
+				
+                    <a href="https://thongtin.land/" style="padding: 0px !important;">
+                        <img src="./THONGTIN.LAND_files/61935847.jpg" width="174px" height="54px;" title="Thongtin.land">
+                                            </a>
+                </li>
+                <li>
+                    <a style="padding: 14px 14px 14px 18px;" href="https://thongtin.land/"><i style="font-size: 25px;" class="fa fa-home" title="home"></i></a>
+                </li>
+                                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="https://thongtin.land/#">Cần bán - Cho thuê <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu multi-level">
+                                                            <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="https://thongtin.land/#">Nhà đất cần bán </a>
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=7">▪ Bán căn hộ chung cư</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=8">▪ Bán nhà riêng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=9">▪ Bán đất nền</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=13">▪ Bán nhà biệt thự, liền kề</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=14">▪ Bán nhà mặt phố</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=15">▪ Bán đất nền dự án</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=16">▪ Bán đất</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=17">▪ Bán trang trại, khu nghĩ dưỡng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=18">▪ Bán kho, nhà xưởng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=1&amp;loai=19">▪ Bán loại bất động sản khác</a>
+                                            </li>
+                                                                            </ul>
+                                </li>
+                                                            <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="https://thongtin.land/#">Nhà đất cho thuê </a>
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=2&amp;loai=10">▪ Cho thuê căn hộ chung cư</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=2&amp;loai=11">▪ Cho thuê nhà riêng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=2&amp;loai=12">▪ Cho thuê nhà trọ, phòng trọ</a>
+                                            </li>
+                                                                            </ul>
+                                </li>
+                                                    </ul>
+                    </li>
+                                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="https://thongtin.land/#">Cần mua - Cần thuê <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu multi-level">
+                                                            <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="https://thongtin.land/#">Nhà đất cần mua </a>
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=3&amp;loai=1">▪ Mua căn hộ chung cư</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=3&amp;loai=2">▪ Mua nhà riêng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=3&amp;loai=3">▪ Mua biệt thự liền kề</a>
+                                            </li>
+                                                                            </ul>
+                                </li>
+                                                            <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="https://thongtin.land/#">Nhà đất cần thuê </a>
+                                    <ul class="dropdown-menu">
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=4&amp;loai=4">▪ Cần thuê căn hộ chung cư</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=4&amp;loai=5">▪ Cần thuê nhà riêng</a>
+                                            </li>
+                                                                                    <li class="divider"></li>
+                                            <li>
+                                                <a tabindex="-1" href="https://thongtin.land/tim-kiem?hinhthuc=4&amp;loai=6">▪ Cần thuê nhà mặt phố</a>
+                                            </li>
+                                                                            </ul>
+                                </li>
+                                                    </ul>
+                    </li>
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="https://thongtin.land/#"> Dự án <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/loai-du-an/1/du-an-chung-cu">▪ Dự án Chung cư</a>
+                            </li>
+
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/loai-du-an/2/trung-tam-thuong-mai">▪ Trung tâm thương mại</a>
+                            </li>
+
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/loai-du-an/3/khu-sinh-thai">▪ Khu sinh thái</a>
+                            </li>
+
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/loai-du-an/4/khu-phan-lo-ban-nen">▪ Khu phân lô bán nền</a>
+                            </li>
+
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/loai-du-an/5/khu-do-thi">▪ Khu đô thị</a>
+                            </li>
+
+                                            </ul>
+                </li>
+                <li>
+                    <a class="dropbtn btn" href="https://thongtin.land/quy-hoach">Quy hoạch </a>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="https://thongtin.land/#"> Tin tức <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/chu-de/1/tin-tuc-tong-hop">
+                                    Tin tức tổng hợp
+                                </a>
+                            </li>
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/chu-de/2/tu-van-phap-luat">
+                                    Tư vấn-pháp luật
+                                </a>
+                            </li>
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/chu-de/3/huong-dan-su-dung">
+                                    Hướng dẫn sử dụng
+                                </a>
+                            </li>
+                                                    <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="https://thongtin.land/chu-de/11/dau-gia-dau-thau">
+                                    Đấu Giá - Đấu Thầu
+                                </a>
+                            </li>
+                                            </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="https://thongtin.land/#"> Danh bạ <i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="divider"></li>
+                        <li>
+                            <a tabindex="-1" href="https://thongtin.land/nha-moi-gioi">▪ Nhà môi giới</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a tabindex="-1" href="https://thongtin.land/#">▪ Doanh nghiệp bất động sản</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+</nav>
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-2 hidden-sm hidden-xs hidden-md" style="padding-left: 0px;" align="right">
+            <a href="https://thongtin.land/register"><img width="100%" alt="" src="./THONGTIN.LAND_files/baner quang cao2.jpg"></a>
+
+            <a href="https://www.facebook.com/land.thongtin/"><img width="100%" alt="" src="./THONGTIN.LAND_files/quang-cao1.gif"></a>
+
+            <a href="https://www.facebook.com/land.thongtin/"><img width="100%" alt="" src="./THONGTIN.LAND_files/google4c086268ad5d6b86.html"></a>
+
+            <a href="https://thongtin.land/"><img width="100%" alt="" src="./THONGTIN.LAND_files/Left 4- 500-300.jpg"></a>
+        </div>
+        <div class="col-lg-8" style="padding: 0px !important;">
+            <a href="https://thongtin.land/dang-tin-ngay"><img width="100%" alt="" style="width: 100%" src="./THONGTIN.LAND_files/dot-1.gif"></a>
+            <div id="alert-message"></div>
+            <div id="alert-message">
+                </div>            
+
+    
+    <!-- <div class="col-md-3 hidden-xs hidden-sm">
+
+        <a href="<%ads.home2.url%>"><img src="<%ads.home2.image%>" alt=""></a>
+
+        <a href="<%ads.home3.url%>"><img src="<%ads.home3.image%>" alt=""></a>
+
+    </div> -->
+<style type="text/css">
+    .newsUl li{
+        height: auto !important;
+        padding: 12px 0px !important;
+        border-bottom:1px solid #cdcdcd;
+    }
+</style>
+<div class="row">
+    <style type="text/css">
+    .select2-container--default .select2-selection--single{
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="col-sm-5 ng-scope" style="" ng-controller="SearchHomeController">
+    <div class="panel panel-default">
+        <div class="panel-heading" style="background: #055698; color: white"><i class="fa fa-search" aria-hidden="true"></i> Công cụ tìm kiếm</div>
+        <div class="panel-body">
+            <ul class="nav nav-tabs" role="tablist" style="background: #cadcea; align-content: center">
+                <li role="presentation" class="active">
+                                            <a style="text-align: center" href="https://thongtin.land/#nhadatban" aria-controls="nhadatban" role="tab" data-toggle="tab">
+                            Nhà đất
+                            <br>bán
+                        </a>
+                                    </li>
+                <li role="presentation" style="border-left: 1px solid white">
+                                            <a style="text-align: center" href="https://thongtin.land/#nhadatchothue" aria-controls="nhadatchothue" role="tab" data-toggle="tab">
+                            Nhà đất
+                            <br>cho thuê
+                        </a>
+                                    </li><li role="presentation" style="border-left: 1px solid white"><a style="text-align: center" href="https://thongtin.land/#nhamoigioi" aria-controls="nhamoigioi" role="tab" data-toggle="tab">Tìm nhà
+                        <br>môi giới</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="nhadatban">
+                    <br>
+                    <form method="GET" action="https://thongtin.land/tim-kiem" accept-charset="UTF-8" class="ng-pristine ng-valid">
+                    <input type="hidden" name="hinhthuc" ng-model="search.nhom" value="1" class="ng-pristine ng-untouched ng-valid ng-empty">
+                    <!-- <b>Loại nhà đất</b> -->
+                    
+                    <select ng-model="search.loai_tin" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" name="loai" tabindex="-1" aria-hidden="true"><option value="7">Bán căn hộ chung cư</option><option value="8">Bán nhà riêng</option><option value="9">Bán đất nền</option><option value="13">Bán nhà biệt thự, liền kề</option><option value="14">Bán nhà mặt phố</option><option value="15">Bán đất nền dự án</option><option value="16">Bán đất</option><option value="17">Bán trang trại, khu nghĩ dưỡng</option><option value="18">Bán kho, nhà xưởng</option><option value="19">Bán loại bất động sản khác</option><option value="" selected="selected">- Chọn loại nhà đất -</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 215px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-loai-bh-container"><span class="select2-selection__rendered" id="select2-loai-bh-container" title="- Chọn loại nhà đất -">- Chọn loại nhà đất -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                  
+                    <!-- <b>Tỉnh / Thành phố</b> -->
+                    
+                    <select ng-model="search.province" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-change="getDistrict(search.province)" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">-Tỉnh / Thành phố -</option>
+                        <!-- ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="1" class="ng-binding ng-scope">Hồ Chí Minh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="2" class="ng-binding ng-scope">Hà Nội</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="3" class="ng-binding ng-scope">Đà Nẵng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="4" class="ng-binding ng-scope">Bình Dương</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="5" class="ng-binding ng-scope">Đồng Nai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="6" class="ng-binding ng-scope">Khánh Hòa</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="7" class="ng-binding ng-scope">Hải Phòng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="8" class="ng-binding ng-scope">Long An</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="9" class="ng-binding ng-scope">Quảng Nam</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="10" class="ng-binding ng-scope">Bà Rịa Vũng Tàu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="11" class="ng-binding ng-scope">Đắk Lắk</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="12" class="ng-binding ng-scope">Cần Thơ</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="13" class="ng-binding ng-scope">Bình Thuận  </option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="14" class="ng-binding ng-scope">Lâm Đồng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="15" class="ng-binding ng-scope">Thừa Thiên Huế</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="16" class="ng-binding ng-scope">Kiên Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="17" class="ng-binding ng-scope">Bắc Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="18" class="ng-binding ng-scope">Quảng Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="19" class="ng-binding ng-scope">Thanh Hóa</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="20" class="ng-binding ng-scope">Nghệ An</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="21" class="ng-binding ng-scope">Hải Dương</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="22" class="ng-binding ng-scope">Gia Lai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="23" class="ng-binding ng-scope">Bình Phước</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="24" class="ng-binding ng-scope">Hưng Yên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="25" class="ng-binding ng-scope">Bình Định</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="26" class="ng-binding ng-scope">Tiền Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="27" class="ng-binding ng-scope">Thái Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="28" class="ng-binding ng-scope">Bắc Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="29" class="ng-binding ng-scope">Hòa Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="30" class="ng-binding ng-scope">An Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="31" class="ng-binding ng-scope">Vĩnh Phúc</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="32" class="ng-binding ng-scope">Tây Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="33" class="ng-binding ng-scope">Thái Nguyên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="34" class="ng-binding ng-scope">Lào Cai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="35" class="ng-binding ng-scope">Nam Định</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="36" class="ng-binding ng-scope">Quảng Ngãi</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="37" class="ng-binding ng-scope">Bến Tre</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="38" class="ng-binding ng-scope">Đắk Nông</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="39" class="ng-binding ng-scope">Cà Mau</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="40" class="ng-binding ng-scope">Vĩnh Long</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="41" class="ng-binding ng-scope">Ninh Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="42" class="ng-binding ng-scope">Phú Thọ</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="43" class="ng-binding ng-scope">Ninh Thuận</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="44" class="ng-binding ng-scope">Phú Yên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="45" class="ng-binding ng-scope">Hà Nam</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="46" class="ng-binding ng-scope">Hà Tĩnh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="47" class="ng-binding ng-scope">Đồng Tháp</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="48" class="ng-binding ng-scope">Sóc Trăng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="49" class="ng-binding ng-scope">Kon Tum</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="50" class="ng-binding ng-scope">Quảng Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="51" class="ng-binding ng-scope">Quảng Trị</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="52" class="ng-binding ng-scope">Trà Vinh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="53" class="ng-binding ng-scope">Hậu Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="54" class="ng-binding ng-scope">Sơn La</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="55" class="ng-binding ng-scope">Bạc Liêu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="56" class="ng-binding ng-scope">Yên Bái</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="57" class="ng-binding ng-scope">Tuyên Quang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="58" class="ng-binding ng-scope">Điện Biên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="59" class="ng-binding ng-scope">Lai Châu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="60" class="ng-binding ng-scope">Lạng Sơn</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="61" class="ng-binding ng-scope">Hà Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="62" class="ng-binding ng-scope">Bắc Kạn</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="63" class="ng-binding ng-scope">Cao Bằng</option><!-- end ngRepeat: tinh in data_province -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 142px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-db28-container"><span class="select2-selection__rendered" id="select2-db28-container" title="-Tỉnh / Thành phố -">-Tỉnh / Thành phố -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search.district" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-change="getWard(search.district)" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Quận / Huyện -</option>
+                        <!-- ngRepeat: quan in data_district -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 241px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-yj64-container"><span class="select2-selection__rendered" id="select2-yj64-container" title="- Quận / Huyện -">- Quận / Huyện -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search.ward" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Phường / Xã -</option>
+                        <!-- ngRepeat: xa in data_ward -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 208px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-xmx4-container"><span class="select2-selection__rendered" id="select2-xmx4-container" title="- Phường / Xã -">- Phường / Xã -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search.street" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Đường phố -</option>
+                        <!-- ngRepeat: street in data_street -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 249px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-1lpx-container"><span class="select2-selection__rendered" id="select2-1lpx-container" title="- Đường phố -">- Đường phố -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    <select class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-model="search.description_gia" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Chọn mức giá -</option>
+                        <option value="0">Thỏa thuận</option>
+                        <option value="1">&lt; 500 triệu</option>
+                        <option value="2">500 - 1 tỷ</option>
+                        <option value="3">1 - 3 tỷ</option>
+                        <option value="4">3 - 5 tỷ</option>
+                        <option value="5">5 - 10 tỷ</option>
+                        <option value="6">&gt; 10 tỷ</option>
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 128px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-t0ea-container"><span class="select2-selection__rendered" id="select2-t0ea-container" title="- Chọn mức giá -">- Chọn mức giá -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    <select class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-model="search.description_dientich" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Chọn diện tích -</option>
+                        <option value="1">&lt; 30 m2</option>
+                        <option value="2">30-50 m2</option>
+                        <option value="3">50-80 m2</option>
+                        <option value="4">80-100 m2</option>
+                        <option value="5">100-150 m2</option>
+                        <option value="6">150-200 m2</option>
+                        <option value="7">&gt; 200 m2</option>
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 131px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-01ir-container"><span class="select2-selection__rendered" id="select2-01ir-container" title="- Chọn diện tích -">- Chọn diện tích -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    
+                        
+
+
+                    <!-- <b>Giá</b>
+                    <br>
+                    Từ <input name="price_from" ng-model="search.price_from" type="number" step="1" style="width: 92px">
+                    đến <input name="price_to" ng-model="search.price_to" type="number" step="1" style="width: 92px"> (triệu)
+                    <br>
+                    <b>Diện tích </b>
+                    <br>
+                    Từ <input type="number" name="sq_from" step="1" style="width: 92px">
+                    đến <input type="number" name="sq_to" step="1" style="width: 92px">(m2)
+                    <br> -->
+
+                    <a class="btn btn-primary" href="https://thongtin.land/tim-kiem" ng-click="tim_kiem(1, search, 0)" style="margin-top: 15px;">
+                        <i class="fa fa-search">
+                            Tìm
+                        </i>
+                    </a>
+
+                    <a class="btn btn-success" href="https://thongtin.land/tim-kiem" ng-click="tim_kiem(1, search, 1)" style="margin-top: 15px;">
+                        <i class="fa fa-search">
+                            Tìm theo bản đồ
+                        </i>
+                    </a>
+                    </form>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="nhadatchothue">
+                    <br>
+                    <form method="GET" action="https://thongtin.land/tim-kiem" accept-charset="UTF-8" class="ng-pristine ng-valid">
+                    <input type="hidden" name="hinhthuc" value="2" ng-model="search2.nhom" class="ng-pristine ng-untouched ng-valid ng-empty">
+                    <!-- <b>Loại nhà đất</b> -->
+                    
+                    <select ng-model="search2.loai_tin" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" name="loai" tabindex="-1" aria-hidden="true"><option value="10">Cho thuê căn hộ chung cư</option><option value="11">Cho thuê nhà riêng</option><option value="12">Cho thuê nhà trọ, phòng trọ</option><option value="" selected="selected">- Chọn loại nhà đất -</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-loai-da-container"><span class="select2-selection__rendered" id="select2-loai-da-container" title="- Chọn loại nhà đất -">- Chọn loại nhà đất -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    
+
+                     <select ng-model="search2.province" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-change="getDistrict(search2.province)" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">-Tỉnh / Thành phố -</option>
+                        <!-- ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="1" class="ng-binding ng-scope">Hồ Chí Minh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="2" class="ng-binding ng-scope">Hà Nội</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="3" class="ng-binding ng-scope">Đà Nẵng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="4" class="ng-binding ng-scope">Bình Dương</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="5" class="ng-binding ng-scope">Đồng Nai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="6" class="ng-binding ng-scope">Khánh Hòa</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="7" class="ng-binding ng-scope">Hải Phòng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="8" class="ng-binding ng-scope">Long An</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="9" class="ng-binding ng-scope">Quảng Nam</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="10" class="ng-binding ng-scope">Bà Rịa Vũng Tàu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="11" class="ng-binding ng-scope">Đắk Lắk</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="12" class="ng-binding ng-scope">Cần Thơ</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="13" class="ng-binding ng-scope">Bình Thuận  </option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="14" class="ng-binding ng-scope">Lâm Đồng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="15" class="ng-binding ng-scope">Thừa Thiên Huế</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="16" class="ng-binding ng-scope">Kiên Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="17" class="ng-binding ng-scope">Bắc Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="18" class="ng-binding ng-scope">Quảng Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="19" class="ng-binding ng-scope">Thanh Hóa</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="20" class="ng-binding ng-scope">Nghệ An</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="21" class="ng-binding ng-scope">Hải Dương</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="22" class="ng-binding ng-scope">Gia Lai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="23" class="ng-binding ng-scope">Bình Phước</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="24" class="ng-binding ng-scope">Hưng Yên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="25" class="ng-binding ng-scope">Bình Định</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="26" class="ng-binding ng-scope">Tiền Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="27" class="ng-binding ng-scope">Thái Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="28" class="ng-binding ng-scope">Bắc Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="29" class="ng-binding ng-scope">Hòa Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="30" class="ng-binding ng-scope">An Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="31" class="ng-binding ng-scope">Vĩnh Phúc</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="32" class="ng-binding ng-scope">Tây Ninh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="33" class="ng-binding ng-scope">Thái Nguyên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="34" class="ng-binding ng-scope">Lào Cai</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="35" class="ng-binding ng-scope">Nam Định</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="36" class="ng-binding ng-scope">Quảng Ngãi</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="37" class="ng-binding ng-scope">Bến Tre</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="38" class="ng-binding ng-scope">Đắk Nông</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="39" class="ng-binding ng-scope">Cà Mau</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="40" class="ng-binding ng-scope">Vĩnh Long</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="41" class="ng-binding ng-scope">Ninh Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="42" class="ng-binding ng-scope">Phú Thọ</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="43" class="ng-binding ng-scope">Ninh Thuận</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="44" class="ng-binding ng-scope">Phú Yên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="45" class="ng-binding ng-scope">Hà Nam</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="46" class="ng-binding ng-scope">Hà Tĩnh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="47" class="ng-binding ng-scope">Đồng Tháp</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="48" class="ng-binding ng-scope">Sóc Trăng</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="49" class="ng-binding ng-scope">Kon Tum</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="50" class="ng-binding ng-scope">Quảng Bình</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="51" class="ng-binding ng-scope">Quảng Trị</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="52" class="ng-binding ng-scope">Trà Vinh</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="53" class="ng-binding ng-scope">Hậu Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="54" class="ng-binding ng-scope">Sơn La</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="55" class="ng-binding ng-scope">Bạc Liêu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="56" class="ng-binding ng-scope">Yên Bái</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="57" class="ng-binding ng-scope">Tuyên Quang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="58" class="ng-binding ng-scope">Điện Biên</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="59" class="ng-binding ng-scope">Lai Châu</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="60" class="ng-binding ng-scope">Lạng Sơn</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="61" class="ng-binding ng-scope">Hà Giang</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="62" class="ng-binding ng-scope">Bắc Kạn</option><!-- end ngRepeat: tinh in data_province --><option ng-repeat="tinh in data_province" value="63" class="ng-binding ng-scope">Cao Bằng</option><!-- end ngRepeat: tinh in data_province -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-jg4g-container"><span class="select2-selection__rendered" id="select2-jg4g-container" title="-Tỉnh / Thành phố -">-Tỉnh / Thành phố -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search2.district" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-change="getWard(search2.district)" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Quận / Huyện -</option>
+                        <!-- ngRepeat: quan in data_district -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-ul61-container"><span class="select2-selection__rendered" id="select2-ul61-container" title="- Quận / Huyện -">- Quận / Huyện -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search2.ward" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Phường / Xã -</option>
+                        <!-- ngRepeat: xa in data_ward -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-m7l4-container"><span class="select2-selection__rendered" id="select2-m7l4-container" title="- Phường / Xã -">- Phường / Xã -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                
+                
+                    <select ng-model="search2.street" class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Đường phố -</option>
+                        <!-- ngRepeat: street in data_street -->
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-e6hv-container"><span class="select2-selection__rendered" id="select2-e6hv-container" title="- Đường phố -">- Đường phố -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    <select class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-model="search2.description_gia" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Chọn mức giá -</option>
+                        <option value="0">Thỏa thuận</option>
+                        <option value="1">&lt; 500 triệu</option>
+                        <option value="2">500 - 1 tỷ</option>
+                        <option value="3">1 - 3 tỷ</option>
+                        <option value="4">3 - 5 tỷ</option>
+                        <option value="5">5 - 10 tỷ</option>
+                        <option value="6">&gt; 10 tỷ</option>
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-bppe-container"><span class="select2-selection__rendered" id="select2-bppe-container" title="- Chọn mức giá -">- Chọn mức giá -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    <select class="select2 select2-hidden-accessible ng-pristine ng-untouched ng-valid ng-empty" ng-model="search2.description_dientich" tabindex="-1" aria-hidden="true">
+                        <option ng-selected="true" value="" selected="selected">- Chọn diện tích -</option>
+                        <option value="1">&lt; 30 m2</option>
+                        <option value="2">30-50 m2</option>
+                        <option value="3">50-80 m2</option>
+                        <option value="4">80-100 m2</option>
+                        <option value="5">100-150 m2</option>
+                        <option value="6">150-200 m2</option>
+                        <option value="7">&gt; 200 m2</option>
+                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-deqn-container"><span class="select2-selection__rendered" id="select2-deqn-container" title="- Chọn diện tích -">- Chọn diện tích -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+
+                    <a class="btn btn-primary" href="https://thongtin.land/tim-kiem" ng-click="tim_kiem(2, search2, 0)" style="margin-top: 15px;">
+                        <i class="fa fa-search">
+                            Tìm
+                        </i>
+                    </a>
+
+                    <a class="btn btn-success" href="https://thongtin.land/tim-kiem" ng-click="tim_kiem(2, search2, 1)" style="margin-top: 15px;">
+                        <i class="fa fa-search">
+                            Tìm theo bản đồ
+                        </i>
+                    </a>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="nhamoigioi">
+                    <br>
+                    <select class="select2 select2-hidden-accessible" data-qh="quanhuyen1" onchange="change_tinh(this)" name="province" tabindex="-1" aria-hidden="true"><option value="47">Đồng Tháp</option><option value="5">Đồng Nai</option><option value="58">Điện Biên</option><option value="38">Đắk Nông</option><option value="11">Đắk Lắk</option><option value="56">Yên Bái</option><option value="31">Vĩnh Phúc</option><option value="40">Vĩnh Long</option><option value="57">Tuyên Quang</option><option value="52">Trà Vinh</option><option value="26">Tiền Giang</option><option value="15">Thừa Thiên Huế</option><option value="19">Thanh Hóa</option><option value="33">Thái Nguyên</option><option value="27">Thái Bình</option><option value="32">Tây Ninh</option><option value="54">Sơn La</option><option value="48">Sóc Trăng</option><option value="51">Quảng Trị</option><option value="18">Quảng Ninh</option><option value="36">Quảng Ngãi</option><option value="9">Quảng Nam</option><option value="50">Quảng Bình</option><option value="44">Phú Yên</option><option value="42">Phú Thọ</option><option value="43">Ninh Thuận</option><option value="41">Ninh Bình</option><option value="20">Nghệ An</option><option value="35">Nam Định</option><option value="8">Long An</option><option value="34">Lào Cai</option><option value="60">Lạng Sơn</option><option value="14">Lâm Đồng</option><option value="59">Lai Châu</option><option value="49">Kon Tum</option><option value="16">Kiên Giang</option><option value="6">Khánh Hòa</option><option value="24">Hưng Yên</option><option value="29">Hòa Bình</option><option value="53">Hậu Giang</option><option value="21">Hải Dương</option><option value="46">Hà Tĩnh</option><option value="45">Hà Nam</option><option value="61">Hà Giang</option><option value="22">Gia Lai</option><option value="63">Cao Bằng</option><option value="39">Cà Mau</option><option value="25">Bình Định</option><option value="13">Bình Thuận  </option><option value="23">Bình Phước</option><option value="4">Bình Dương</option><option value="37">Bến Tre</option><option value="17">Bắc Ninh</option><option value="55">Bạc Liêu</option><option value="62">Bắc Kạn</option><option value="28">Bắc Giang</option><option value="10">Bà Rịa Vũng Tàu</option><option value="30">An Giang</option><option value="1">Hồ Chí Minh</option><option value="2">Hà Nội</option><option value="7">Hải Phòng</option><option value="3">Đà Nẵng</option><option value="12">Cần Thơ</option><option value="" selected="selected"> - Chọn Tỉnh/Thành phố -</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-province-bj-container"><span class="select2-selection__rendered" id="select2-province-bj-container" title=" - Chọn Tỉnh/Thành phố -"> - Chọn Tỉnh/Thành phố -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    <!-- <b>Quận / Huyện</b> -->
+                    <select class="select2 select2-hidden-accessible" id="quanhuyen1" data-px="phuongxa1" onchange="change_huyen(this)" name="district" tabindex="-1" aria-hidden="true"><option value="0">- Chọn Quận/Huyện -</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-quanhuyen1-container"><span class="select2-selection__rendered" id="select2-quanhuyen1-container" title="- Chọn Quận/Huyện -">- Chọn Quận/Huyện -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    <!-- <b>Phường xã</b> -->
+                    <select class="select2 select2-hidden-accessible" id="phuongxa1" name="ward" tabindex="-1" aria-hidden="true"><option value="0">- Chọn Phường/Xã -</option></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 1.98864px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-phuongxa1-container"><span class="select2-selection__rendered" id="select2-phuongxa1-container" title="- Chọn Phường/Xã -">- Chọn Phường/Xã -</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                    <a href="https://thongtin.land/nha-moi-gioi" class="btn btn-primary" style="margin-top: 15px;">
+                        <i class="fa fa-search">
+                            Tìm kiếm
+                        </i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        // $('#autocomplete').autocomplete({
+        //     serviceUrl: '/autocomplete/countries',
+        //     onSelect: function (suggestion) {
+        //         alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        //     }
+        // });
+        function change_tinh(e){
+            var tinh = $(e).val();
+            $('#'+$(e).attr('data-qh')).empty();
+            $('#'+$('#'+$(e).attr('data-qh')).attr('data-px')).empty();
+            $.ajax({
+                url:"https://thongtin.land/change-tinh/"+tinh,
+                success:function (data) {
+                    $('#'+$(e).attr('data-qh')).empty();
+                    var text = '';
+                    $.each(data,function(index,value){
+                        text+='<option value="'+index+'">'+value+'</option>'
+                    })
+                    text+='<option value="" selected>- Quận / Huyện - </option>'
+                    $('#'+$(e).attr('data-qh')).append(text);
+                    $('#'+$(e).attr('data-qh')).select2();
+                }
+            })
+        }
+        function change_huyen(e){
+            var tinh = $(e).val();
+            $('#'+$(e).attr('data-px')).empty();
+            $.ajax({
+                url:"https://thongtin.land/change-quan/"+tinh,
+                success:function (data) {
+                    $('#'+$(e).attr('data-px')).empty();
+                    var text = '';
+                    $.each(data,function(index,value){
+                        text+='<option value="'+index+'">'+value+'</option>'
+                    })
+                    text+='<option value="" selected>- Phường / Xã - </option>'
+                    $('#'+$(e).attr('data-px')).append(text);
+                    $('#'+$(e).attr('data-px')).select2();
+                }
+            })
+        }
+        $('.select2').select2();
+    </script>    <div class="col-md-7">
+        <div id="news2" style="overflow: hidden; position: relative; height: 150px;">
+            <ul style="position: absolute; margin: 0px; padding: 0px; top: 0px;">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                            <li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1986/dau-gia-qsdd-tai-huyen-cu-mgar-tinh-dak-lak"><h4>Đấu giá QSDĐ tại huyện Cư M’Gar, tỉnh Đắk Lắk</h4></a>
+                        CƯ M'GAR - DAKLAK
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1985/thi-truong-bat-dong-san-long-dien-xuyen-moc-phat-trien-nong-theo-ha-tang"><h4>Thị trường bất động sản Long Điền, Xuyên Mộc phát triển nóng theo hạ tầng</h4></a>
+                        LONG ĐIỀN, XUYÊN MỘC - BÀ RỊA VŨNG TÀU
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1984/binh-thuan-duyet-chuong-trinh-phat-trien-cac-khu-do-thi-moi-tai-tx-la-gi"><h4>Bình Thuận duyệt Chương trình phát triển các khu đô thị mới tại TX. La Gi</h4></a>
+                        TX LAGI - BÌNH THUẬN
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1983/thuan-an-len-thanh-pho-thoi-diem-de-dau-tu-bat-dong-san"><h4>Thuận An lên thành phố: Thời điểm để đầu tư bất động sản</h4></a>
+                        THUẬN AN - BÌNH DƯƠNG
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1982/tu-33-dat-chuyen-nhuong-bang-giay-viet-tay-duoc-cap-so-do"><h4>Từ 3/3, đất chuyển nhượng bằng giấy viết tay được cấp sổ đỏ</h4></a>
+                        TOÀN QUỐC
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1991/tphcm-duyet-nhiem-vu-quy-hoach-khu-dan-cu-cat-lai"><h4>Tp.HCM duyệt nhiệm vụ quy hoạch khu dân cư Cát Lái</h4></a>
+                        KHU DÂN CƯ CÁT LÁI - TPHCM
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1990/quy-hoach-do-thi-moi-nhon-trach-trong-tuong-lai-nhu-the-nao"><h4>Quy hoạch đô thị mới Nhơn Trạch trong tương lai như thế nào?</h4></a>
+                        NHƠN TRẠCH - ĐỒNG NAI
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1989/phu-yen-chuan-bi-khoi-cong-6-du-an-dau-tu-cong"><h4>Phú Yên chuẩn bị khởi công 6 dự án đầu tư công</h4></a>
+                        PHÚ YÊN
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1988/ban-hanh-nghi-dinh-25-go-mot-nut-that-lon-cho-bat-dong-san"><h4>Ban hành Nghị định 25, gỡ một nút thắt lớn cho bất động sản</h4></a>
+                        TOÀN QUỐC
+                    </li><li style="list-style-type: none; height: 150px; margin: 0px; padding: 0px;">
+                        <img class="img img-responsive" src="https://thongtin.land/" style="width:180px;padding:0px 20px 10px 0px;float:left;" alt="">
+                        <a href="https://thongtin.land/tin-tuc/1987/binh-dinh-chap-thuan-dieu-chinh-dau-tu-du-an-phan-khu-so-2"><h4>Bình Định: Chấp thuận điều chỉnh đầu tư Dự án Phân khu số 2</h4></a>
+                        TP QUY NHƠN - BÌNH ĐỊNH
+                    </li></ul>
+        </div>
+        
+        <div id="news" style="border-top: 1px solid rgb(205, 205, 205); overflow: hidden; position: relative; height: 281.034px;" class="">
+            <ul class="newsUl" style="position: absolute; margin: 0px; padding: 0px; top: 0px;">
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            <li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1986/dau-gia-qsdd-tai-huyen-cu-mgar-tinh-dak-lak">▪ Đấu giá QSDĐ tại huyện Cư M’Gar, tỉnh Đắk Lắk</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1985/thi-truong-bat-dong-san-long-dien-xuyen-moc-phat-trien-nong-theo-ha-tang">▪ Thị trường bất động sản Long Điền, Xuyên Mộc phát triển nóng theo hạ tầng</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1984/binh-thuan-duyet-chuong-trinh-phat-trien-cac-khu-do-thi-moi-tai-tx-la-gi">▪ Bình Thuận duyệt Chương trình phát triển các khu đô thị mới tại TX. La Gi</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1983/thuan-an-len-thanh-pho-thoi-diem-de-dau-tu-bat-dong-san">▪ Thuận An lên thành phố: Thời điểm để đầu tư bất động sản</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1982/tu-33-dat-chuyen-nhuong-bang-giay-viet-tay-duoc-cap-so-do">▪ Từ 3/3, đất chuyển nhượng bằng giấy viết tay được cấp sổ đỏ</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1991/tphcm-duyet-nhiem-vu-quy-hoach-khu-dan-cu-cat-lai">▪ Tp.HCM duyệt nhiệm vụ quy hoạch khu dân cư Cát Lái</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1990/quy-hoach-do-thi-moi-nhon-trach-trong-tuong-lai-nhu-the-nao">▪ Quy hoạch đô thị mới Nhơn Trạch trong tương lai như thế nào?</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1989/phu-yen-chuan-bi-khoi-cong-6-du-an-dau-tu-cong">▪ Phú Yên chuẩn bị khởi công 6 dự án đầu tư công</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1988/ban-hanh-nghi-dinh-25-go-mot-nut-that-lon-cho-bat-dong-san">▪ Ban hành Nghị định 25, gỡ một nút thắt lớn cho bất động sản</a>
+                    
+                </li><li style="height: 65px; margin: 0px; padding: 0px;">
+                    <a href="https://thongtin.land/tin-tuc/1987/binh-dinh-chap-thuan-dieu-chinh-dau-tu-du-an-phan-khu-so-2">▪ Bình Định: Chấp thuận điều chỉnh đầu tư Dự án Phân khu số 2</a>
+                    
+                </li></ul>
+        </div>
+    </div>
+    
+</div>
+ <a href="https://thongtin.land/app"><img width="100%" alt="" style="width: 100%; margin-bottom:10px;" src="./THONGTIN.LAND_files/icond.gif"></a>
+<div class="row ng-scope" ng-controller="TinDangController">
+    <div class="col-md-9" style="padding-left: 0">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="background: #055698; color: white">Tin dành cho bạn</div>
+            <div class="panel-body">
+                <!-- ngRepeat: td in list_tin_dang --><div class="row ng-scope" ng-repeat="td in list_tin_dang">
+                    <hr style="border-color: #055698">
+                    <div class="col-md-2 col-sm-12">
+                            
+                        <img ng-src="https://thongtin.land/img/uploads/56100329.JPG" class="img img-responsive" alt="" src="./THONGTIN.LAND_files/56100329.JPG">
+                    </div>
+                    <div class="col-md-10 ng-binding">
+                        <a href="https://thongtin.land/bat-dong-san/1550226831/bat-dong-san">
+                            <b class="ng-binding">
+                                Đất ở  
+                                
+                                 - Cá nhân
+                                
+                            </b>
+                        </a>
+                        <br>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                        <br>
+                        Diện tích: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 150 m²
+                        <br>
+                        Quận/huyện: &nbsp;&nbsp;  Xã Tân An Thành phố Buôn Ma Thuột Đắk Lắk <br><i class="ng-binding"></i>
+                    </div>
+                </div><!-- end ngRepeat: td in list_tin_dang --><div class="row ng-scope" ng-repeat="td in list_tin_dang">
+                    <hr style="border-color: #055698">
+                    <div class="col-md-2 col-sm-12">
+                            
+                        <img ng-src="https://thongtin.land/img/uploads/50579829.JPG" class="img img-responsive" alt="" src="./THONGTIN.LAND_files/50579829.JPG">
+                    </div>
+                    <div class="col-md-10 ng-binding">
+                        <a href="https://thongtin.land/bat-dong-san/1550226831/bat-dong-san">
+                            <b class="ng-binding">
+                                Đất ở  
+                                
+                                 - Cá nhân
+                                
+                            </b>
+                        </a>
+                        <br>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                        <br>
+                        Diện tích: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 150 m²
+                        <br>
+                        Quận/huyện: &nbsp;&nbsp;  Xã Tân An Thành phố Buôn Ma Thuột Đắk Lắk <br><i class="ng-binding"></i>
+                    </div>
+                </div><!-- end ngRepeat: td in list_tin_dang --><div class="row ng-scope" ng-repeat="td in list_tin_dang">
+                    <hr style="border-color: #055698">
+                    <div class="col-md-2 col-sm-12">
+                            
+                        <img ng-src="https://thongtin.land/img/uploads/5852483.JPG" class="img img-responsive" alt="" src="./THONGTIN.LAND_files/5852483.JPG">
+                    </div>
+                    <div class="col-md-10 ng-binding">
+                        <a href="https://thongtin.land/bat-dong-san/1550226831/bat-dong-san">
+                            <b class="ng-binding">
+                                Đất ở  
+                                
+                                 - Cá nhân
+                                
+                            </b>
+                        </a>
+                        <br>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                        <br>
+                        Diện tích: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 150 m²
+                        <br>
+                        Quận/huyện: &nbsp;&nbsp;  Xã Tân An Thành phố Buôn Ma Thuột Đắk Lắk <br><i class="ng-binding"></i>
+                    </div>
+                </div><!-- end ngRepeat: td in list_tin_dang --><div class="row ng-scope" ng-repeat="td in list_tin_dang">
+                    <hr style="border-color: #055698">
+                    <div class="col-md-2 col-sm-12">
+                            
+                        <img ng-src="https://thongtin.land/img/uploads/8560978.JPG" class="img img-responsive" alt="" src="./THONGTIN.LAND_files/8560978.JPG">
+                    </div>
+                    <div class="col-md-10 ng-binding">
+                        <a href="https://thongtin.land/bat-dong-san/1550226831/bat-dong-san">
+                            <b class="ng-binding">
+                                Đất ở  
+                                
+                                 - Cá nhân
+                                
+                            </b>
+                        </a>
+                        <br>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                        <br>
+                        Diện tích: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 150 m²
+                        <br>
+                        Quận/huyện: &nbsp;&nbsp;  Xã Tân An Thành phố Buôn Ma Thuột Đắk Lắk <br><i class="ng-binding"></i>
+                    </div>
+                </div><!-- end ngRepeat: td in list_tin_dang --><div class="row ng-scope" ng-repeat="td in list_tin_dang">
+                    <hr style="border-color: #055698">
+                    <div class="col-md-2 col-sm-12">
+                            
+                        <img ng-src="https://thongtin.land/img/uploads/98016858.JPG" class="img img-responsive" alt="" src="./THONGTIN.LAND_files/98016858.JPG">
+                    </div>
+                    <div class="col-md-10 ng-binding">
+                        <a href="https://thongtin.land/bat-dong-san/1550226830/bat-dong-san">
+                            <b class="ng-binding">
+                                Cần bán căn nhà 
+                                
+                                 - Cá nhân
+                                
+                            </b>
+                        </a>
+                        <br>
+                        Giá: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         
+                        <br>
+                        Diện tích: &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 125 m²
+                        <br>
+                        Quận/huyện: &nbsp;&nbsp;Đường 12A Xã Cư Ebur Thành phố Buôn Ma Thuột Đắk Lắk <br><i class="ng-binding"></i>
+                    </div>
+                </div><!-- end ngRepeat: td in list_tin_dang -->
+                <br>
+                <center><button style="background: #055698;border: 0px;color: #fff;padding: 10px 15px;border-radius: 5px;" ng-click="loadmore()" class="ng-binding">Xem thêm</button></center>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" style="padding-right: 0">
+        <div class="panel panel-default">
+            <div align="center" class="panel-heading ng-binding" style="background: #055698; color: white">Tin tức tổng hợp</div>
+            <div class="panel-body">
+                <!-- ngRepeat: news in list_news.data1 --><div ng-repeat="news in list_news.data1" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+               <a href="https://thongtin.land/tin-tuc/1991/tphcm-duyet-nhiem-vu-quy-hoach-khu-dan-cu-cat-lai)" class="ng-binding">Tp.HCM duyệt nhiệm vụ quy hoạch khu dân cư Cát Lái</a>
+                </div><!-- end ngRepeat: news in list_news.data1 --><div ng-repeat="news in list_news.data1" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+               <a href="https://thongtin.land/tin-tuc/1990/quy-hoach-do-thi-moi-nhon-trach-trong-tuong-lai-nhu-the-nao)" class="ng-binding">Quy hoạch đô thị mới Nhơn Trạch trong tương lai như thế nào?</a>
+                </div><!-- end ngRepeat: news in list_news.data1 --><div ng-repeat="news in list_news.data1" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+               <a href="https://thongtin.land/tin-tuc/1989/phu-yen-chuan-bi-khoi-cong-6-du-an-dau-tu-cong)" class="ng-binding">Phú Yên chuẩn bị khởi công 6 dự án đầu tư công</a>
+                </div><!-- end ngRepeat: news in list_news.data1 -->
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div align="center" class="panel-heading ng-binding" style="background: #055698; color: white">Tư vấn-pháp luật</div>
+            <div class="panel-body">
+                <!-- ngRepeat: news2 in list_news.data2 --><div ng-repeat="news2 in list_news.data2" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/1912/duyet-cong-nhan-tp-cao-lanh-dong-thap-la-do-thi-loai-ii)" class="ng-binding">Duyệt công nhận TP. Cao Lãnh (Đồng Tháp) là đô thị loại II</a>
+                </div><!-- end ngRepeat: news2 in list_news.data2 --><div ng-repeat="news2 in list_news.data2" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/1896/cong-van-so-203vpcp-cn-cua-van-phong-chinh-phu-vv-giao-chu-dau-tu-du-an-xay-dung-duong-ho-chi-minh-doan-tranh-phia-dong-thanh-pho-buon-ma-thuot)" class="ng-binding">Công văn số 203/VPCP-CN của Văn phòng Chính phủ : V/v giao chủ đầu tư Dự án xây dựng đường Hồ Chí Minh đoạn tránh phía Đông thành phố Buôn Ma Thuột</a>
+                </div><!-- end ngRepeat: news2 in list_news.data2 --><div ng-repeat="news2 in list_news.data2" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/1888/sua-quy-dinh-boi-thuong-ho-tro-tai-dinh-cu-khi-nha-nuoc-thu-hoi-dat)" class="ng-binding">Sửa quy định bồi thường, hỗ trợ, tái định cư khi Nhà nước thu hồi đất</a>
+                </div><!-- end ngRepeat: news2 in list_news.data2 -->
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div align="center" class="panel-heading ng-binding" style="background: #055698; color: white">Hướng dẫn sử dụng</div>
+            <div class="panel-body">
+                <!-- ngRepeat: news3 in list_news.data3 --><div ng-repeat="news3 in list_news.data3" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/664/tin-dang-popup-mien-phi-hang-tuan)" class="ng-binding">Tin Đăng Popup Miễn Phí Hàng Tuần</a>
+                </div><!-- end ngRepeat: news3 in list_news.data3 --><div ng-repeat="news3 in list_news.data3" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/623/huong-dan-cai-dat-ung-dung)" class="ng-binding">Hướng Dẫn Cài Đặt Ứng Dụng</a>
+                </div><!-- end ngRepeat: news3 in list_news.data3 --><div ng-repeat="news3 in list_news.data3" class="tinwidget ng-scope" style="padding: 10px 0px;border-bottom: 1px solid #cdcdcd;">
+                    <a href="https://thongtin.land/tin-tuc/622/huong-dan-dang-nhap-dang-ky-doi-mat-khau)" class="ng-binding">Hướng Dẫn Đăng Nhập, Đăng Ký, Đổi Mật Khẩu</a>
+                </div><!-- end ngRepeat: news3 in list_news.data3 -->
+            </div>
+        </div>
+    </div>
+    
+</div>
+ <a href="https://thongtin.land/app"><img width="100%" alt="" style="width: 100%; margin-bottom:10px;" src="./THONGTIN.LAND_files/icond.gif"></a>
+        </div>
+        <div class="col-lg-2 hidden-sm hidden-xs hidden-md" style="padding-right: 0px;">
+            <a href="https://thongtin.land/register"><img width="100%" alt="" src="./THONGTIN.LAND_files/baner quang cao2.jpg"></a>
+
+            <a href="https://www.facebook.com/land.thongtin/"><img width="100%" alt="" src="./THONGTIN.LAND_files/quang-cao1.gif"></a>
+
+            <a href="https://thongtin.land/"><img width="100%" alt="" src="./THONGTIN.LAND_files/apple-air.png"></a>
+
+            <a href="https://thongtin.land/"><img width="100%" alt="" src="./THONGTIN.LAND_files/Right 4- 500-300.jpg"></a>
+
+        </div>
+    </div>
+</div>
+<!-- <div  style="height: 100px; position: relative; background: black;color: white; line-height: 100px"  align="center">
+    &lt;div class=&quot;footer-bottom-end-row1&quot; style=&quot;color:#000000; padding-bottom:10px; text-align:center&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;http://thongtin.land/image_ck/files/Logo%20fn%20bg.png&quot; style=&quot;height:70px; width:70px&quot; /&gt;&lt;/div&gt;
+
+&lt;div class=&quot;footer-bottom-end-row1&quot; style=&quot;color:#000000; padding-bottom:10px; text-align:center&quot;&gt;&lt;span style=&quot;font-size:16px&quot;&gt;&lt;strong&gt;C&Ocirc;NG TY CỔ PHẦN THONGTIN.LAND&lt;/strong&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&quot;mailto:info@thongtin.land&quot;&gt;info@thongtin.land&lt;/a&gt;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;https://www.facebook.com/land.thongtin/?ref=bookmarks&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;/realty/public/image_ck/images/facebook.png&quot; style=&quot;height:22px; width:22px&quot; /&gt;&lt;/a&gt;&nbsp; &nbsp;&nbsp;&lt;img alt=&quot;&quot; src=&quot;https://www.youtube.com/&quot; style=&quot;height:22px; width:22px&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/channel/UCmodCFC6ChCBEdUY31wckIA&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;https://storage.googleapis.com/gweb-uniblog-publish-prod/images/YouTube.max-200x200.png&quot; style=&quot;height:30px; width:30px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Giấy ĐKKD số:&lt;/strong&gt; &lt;em&gt;&lt;strong&gt;6001649158&lt;/strong&gt;&lt;/em&gt; Do Sở Kế hoạch v&agrave; Đầu tư Tỉnh ĐắkLắk&nbsp;cấp lần đầu ng&agrave;y 11/01/2019&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;S&agrave;n GD Thương mại điện tử:&lt;/strong&gt;&nbsp;&nbsp;&lt;span style=&quot;color:#008000&quot;&gt;&lt;em&gt;&lt;strong&gt;2019-0055/ĐK/TMĐT&lt;/strong&gt;&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ứng dụng cung cấp dịch vụ TMĐT: &lt;/strong&gt;&lt;span style=&quot;color:#008000&quot;&gt;&lt;em&gt;&lt;strong&gt;2019-0022/ƯD/TMĐT&lt;/strong&gt;&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&nbsp; &nbsp;&lt;a href=&quot;http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=53701&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;http://online.gov.vn/PublicImages/2015/08/27/11/20150827110756-dadangky.png&quot; style=&quot;height:56px; width:150px&quot; title=&quot;&quot; /&gt;&lt;/a&gt;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&lt;a href=&quot;http://online.gov.vn/HomePage/AppDisplay.aspx?DocId=616&quot;&gt;&lt;img alt=&quot;&quot; src=&quot;http://online.gov.vn/PublicImages/2015/08/27/11/20150827110756-dadangky.png&quot; style=&quot;height:56px; width:150px&quot; /&gt;&lt;/a&gt;&nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.dmca.com/compliance/thongtin.land&quot; title=&quot;DMCA Compliance information for thongtin.land&quot;&gt;&lt;img src=&quot;https://www.dmca.com/img/dmca-compliant-white-bg.png&quot; style=&quot;height:45px; width:155px&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse; width:100%&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&nbsp;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;
+			&lt;table border=&quot;1&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;background-color:#ffffff; border-collapse:separate; border-radius:3px; border:1px solid #dddfe2; font-family:helvetica,arial,sans-serif; margin:0px auto; width:280px&quot;&gt;
+				&lt;tbody&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&nbsp;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;color:#ff0000&quot;&gt;&lt;strong&gt;GROUP THONGTIN.LAND&lt;/strong&gt;&lt;/span&gt;&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td style=&quot;text-align:center&quot;&gt;Nh&oacute;m Mua b&aacute;n &middot; 1181 th&agrave;nh vi&ecirc;n&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;
+						&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse; width:100%&quot;&gt;
+							&lt;tbody&gt;
+								&lt;tr&gt;
+									&lt;td style=&quot;background-color:#4267b2; text-align:center&quot;&gt;
+									&lt;table align=&quot;center&quot; border=&quot;0&quot; cellpadding=&quot;3&quot; cellspacing=&quot;0&quot; style=&quot;border-collapse:collapse&quot;&gt;
+										&lt;tbody&gt;
+											&lt;tr&gt;
+												&lt;td&gt;&lt;strong&gt;&lt;a href=&quot;https://www.facebook.com/plugins/group/join/popup/?group_id=885792845118018&amp;source=email_campaign_plugin&quot; rel=&quot;noopener&quot; style=&quot;color:#3b5998;text-decoration:none;cursor:pointer;width:100%;&quot; target=&quot;_blank&quot;&gt;&lt;span style=&quot;color:#f0ffff&quot;&gt;CLICK THAM GIA C&Ugrave;NG CỘNG ĐỒNG&lt;/span&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/tbody&gt;
+									&lt;/table&gt;
+									&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+						&lt;/td&gt;
+					&lt;/tr&gt;
+					&lt;tr&gt;
+						&lt;td&gt;&nbsp;&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;
+			&lt;/table&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&nbsp;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;span style=&quot;color:#555754&quot;&gt;&reg; Ghi r&otilde; nguồn &quot;Thongtin.land&quot; khi ph&aacute;t h&agrave;nh lại th&ocirc;ng tin từ website n&agrave;y.&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&quot;footer-bottom-end-row1&quot; style=&quot;color:#555754; position:relative&quot;&gt;Copyright &copy;&nbsp;2019&nbsp;&lt;a href=&quot;https://thongtin.land/app&quot;&gt;THONGTIN.LAND&lt;/a&gt;&lt;/div&gt;
+
+        <a href="miennam24h.vn" target="_blank" style="position: absolute;
+        bottom: 20px;
+        right: 15px;
+        line-height: 0px;
+        color: #4a4a4a;
+        height: auto;">Phát triển bởi Miennam24h.vn</a>
+    </div> -->
+<div class="container" style="text-align: center;">
+
+    <a href="https://thongtin.land/gioi-thieu" rel="nofollow">Giới thiệu</a> |
+
+    <a href="https://thongtin.land/dieu-khoan-thoa-thuan" rel="nofollow">Cơ chế giải quyết tranh chấp</a> |
+
+    <a href="https://thongtin.land/quy-che-hoat-dong" rel="nofollow">Chính sách bảo mật</a> |
+
+    <a href="https://thongtin.land/bao-gia" rel="nofollow">Quy chế hoạt động</a> |
+
+    <a href="https://thongtin.land/ho-tro" rel="nofollow">Hỗ trợ</a> |
+
+    <a href="https://thongtin.land/lien-he" rel="nofollow">Liên hệ</a> |
+    <div class="clear">
+    </div>
+</div>
+
+<div class="footer-bottom-end">
+<div class="footer-bottom-end-row1" style="color:#000000; padding-bottom:10px; text-align:center"><img alt="" src="./THONGTIN.LAND_files/Logo fn bg.png" style="height:70px; width:70px"></div>
+
+<div class="footer-bottom-end-row1" style="color:#000000; padding-bottom:10px; text-align:center"><span style="font-size:16px"><strong>CÔNG TY CỔ PHẦN THONGTIN.LAND</strong></span></div>
+
+<p><strong>Email:</strong> <a href="mailto:info@thongtin.land">info@thongtin.land</a>&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/land.thongtin/?ref=bookmarks"><img alt="" src="./THONGTIN.LAND_files/facebook.png" style="height:22px; width:22px"></a>&nbsp; &nbsp;&nbsp;<img alt="" src="./THONGTIN.LAND_files/saved_resource" style="height:22px; width:22px"><a href="https://www.youtube.com/channel/UCmodCFC6ChCBEdUY31wckIA"><img alt="" src="./THONGTIN.LAND_files/YouTube.max-200x200.png" style="height:30px; width:30px"></a></p>
+
+<p><strong>Giấy ĐKKD số:</strong> <em><strong>6001649158</strong></em> Do Sở Kế hoạch và Đầu tư Tỉnh ĐắkLắk&nbsp;cấp lần đầu ngày 11/01/2019</p>
+
+<p><strong>Sàn GD Thương mại điện tử:</strong>&nbsp;&nbsp;<span style="color:#008000"><em><strong>2019-0055/ĐK/TMĐT</strong></em></span></p>
+
+<p><strong>Ứng dụng cung cấp dịch vụ TMĐT: </strong><span style="color:#008000"><em><strong>2019-0022/ƯD/TMĐT</strong></em></span></p>
+
+<p>&nbsp; &nbsp;<a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=53701"><img alt="" src="./THONGTIN.LAND_files/20150827110756-dadangky.png" style="height:56px; width:150px" title=""></a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<a href="http://online.gov.vn/HomePage/AppDisplay.aspx?DocId=616"><img alt="" src="./THONGTIN.LAND_files/20150827110756-dadangky.png" style="height:56px; width:150px"></a>&nbsp;</p>
+
+<p><a href="https://www.dmca.com/compliance/thongtin.land" title="DMCA Compliance information for thongtin.land"><img src="./THONGTIN.LAND_files/dmca-compliant-white-bg.png" style="height:45px; width:155px"></a></p>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+			<table border="1" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-collapse:separate; border-radius:3px; border:1px solid #dddfe2; font-family:helvetica,arial,sans-serif; margin:0px auto; width:280px">
+				<tbody>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td style="text-align:center"><span style="color:#ff0000"><strong>GROUP THONGTIN.LAND</strong></span></td>
+					</tr>
+					<tr>
+						<td style="text-align:center">Nhóm Mua bán · 1181 thành viên</td>
+					</tr>
+					<tr>
+						<td>
+						<table border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; width:100%">
+							<tbody>
+								<tr>
+									<td style="background-color:#4267b2; text-align:center">
+									<table align="center" border="0" cellpadding="3" cellspacing="0" style="border-collapse:collapse">
+										<tbody>
+											<tr>
+												<td><strong><a href="https://www.facebook.com/plugins/group/join/popup/?group_id=885792845118018&amp;source=email_campaign_plugin" rel="noopener" style="color:#3b5998;text-decoration:none;cursor:pointer;width:100%;" target="_blank"><span style="color:#f0ffff">CLICK THAM GIA CÙNG CỘNG ĐỒNG</span></a></strong></td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span style="color:#555754">® Ghi rõ nguồn "Thongtin.land" khi phát hành lại thông tin từ website này.</span></p>
+
+<div class="footer-bottom-end-row1" style="color:#555754; position:relative">Copyright ©&nbsp;2019&nbsp;<a href="https://thongtin.land/app">THONGTIN.LAND</a></div>
+<!-- <div class="footer-bottom-end-row1" style="padding-bottom: 10px; color: #000;">
+<strong style="font-size: 1.2em;">Công ty cổ phần bất động sản Thongtin.land</strong>
+</div>
+<div class="footer-bottom-end-row1" style="color: #555754">
+Copyright © 2017 Thongtin.land.
+</div>
+<div class="footer-bottom-end-row1" style="color: #555754">
+Email: lienhe@thongtin.land | lienhe@thongtin.land
+<a rel="nofollow" href="skype:cskh.thongtinland?chat" title="Chat với thongtin.land" style="text-decoration: none;">
+<img src="https://file4.batdongsan.com.vn/images/opt/skype.png" alt="skype" style="vertical-align: bottom; height: 20px;">
+</a>
+</div>
+<div class="footer-bottom-end-row1" style="color: #555754">
+Giấy phép ICP số ... - ® Ghi rõ nguồn "Thongtin.land" khi phát hành lại thông tin từ website này.
+</div>
+<div class="footer-bottom-end-row1" style="color: #555754; position: relative;">
+© 2017, Design by <a style="color: #555754" href="http://miennam24h.vn" target="_blank">Miennam24h.vn</a>
+
+</div> -->
+</div>
+
+<!-- JavaScripts -->
+
+
+
+    <script>
+        $(function() {
+            $(' #news').vTicker({showItems:7});
+            $(' #news2').vTicker({
+                showItems:1,
+                speed:900
+            });
+
+        });
+    </script>
+<script>
+    $(document).ready(function () {
+
+        $('.dropdown-submenu a.test').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+//            e.preventDefault();
+        });
+        $(function () {
+            $(".rslides").responsiveSlides({
+                auto: true,             // Boolean: Animate automatically, true or false
+                speed: 500,            // Integer: Speed of the transition, in milliseconds
+                timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+                pager: false,           // Boolean: Show pager, true or false
+                nav: false,             // Boolean: Show navigation, true or false
+                random: false,          // Boolean: Randomize the order of the slides, true or false
+                pause: false,           // Boolean: Pause on hover, true or false
+                pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+                prevText: "Previous",   // String: Text for the "previous" button
+                nextText: "Next",       // String: Text for the "next" button
+                maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+                navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+                manualControls: "",     // Selector: Declare custom pager navigation
+                namespace: "rslides",   // String: Change the default namespace used
+                before: function () {
+                },   // Function: Before callback
+                after: function () {
+                }     // Function: After callback
+            });
+        });
+
+        setInterval(function () {
+            moveRight();
+        }, 3000);
+
+        var slideCount = $('#slider ul li').length;
+        var slideWidth = $('#slider ul li').width();
+        var slideHeight = $('#slider ul li').height();
+        var sliderUlWidth = slideCount * slideWidth;
+
+        $('#slider').css({width: slideWidth, height: slideHeight});
+
+        $('#slider ul').css({width: sliderUlWidth, marginLeft: -slideWidth});
+
+        $('#slider ul li:last-child').prependTo('#slider ul');
+
+        function moveRight() {
+            $('#slider ul').animate({
+                left: -slideWidth
+            }, 200, function () {
+                $('#slider ul li:first-child').appendTo('#slider ul');
+                $('#slider ul').css('left', '');
+            });
+        };
+
+
+    });
+</script>
+<script src="./THONGTIN.LAND_files/sweetalert.min.js.download"></script>
+<script>
+    var url_img = "https://thongtin.land/images";
+    var url_get_notice = "https://thongtin.land/user/friendships/get-notice";
+    var url_see_notice = "https://thongtin.land/user/friendships/see-notice";
+    var url_see_kmz = "https://thongtin.land/user/view-kmz";
+    var url_see_tindang = "https://thongtin.land/bat-dong-san";
+</script>
+<script src="./THONGTIN.LAND_files/notice.js.download"></script>
+
+</body></html>

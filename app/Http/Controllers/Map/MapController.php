@@ -15,7 +15,7 @@ class MapController extends Controller
     protected $base = "https://api.mapbox.com";
     public function index()
     {
-        $maps = Map::all();
+        $maps = Map::paginate(10);
         return view('admin.map.index', compact('maps'));
     }
     public function create()
@@ -47,17 +47,18 @@ class MapController extends Controller
             //     $insert_data[] = $data;
             // }
             //$insert_data[] = array("title" => $request->title);
-            $styleInfo = explode("/", $request->map_style);
+            $styleInfo = explode("/", $mapStyle);
             $style_id = $styleInfo[4];
             $username = $styleInfo[3];
             $this->username = $styleInfo[3];
             $style = $this->getStyle($style_id);
-            print_r($style);
-            $send_back_data[] = compact('title', 'address', 'city', 'insert_data');
-            print_r($send_back_data);
-            //DynamicField::insert($insert_data);         //for model
+            $style = json_decode($style);
+
+            $send_back_data[] = compact('style', 'username', 'style_id', 'accessToken');
+
             return response()->json([
-                'success'  => 'Data Added successfully.'
+                'success'  => 'Data Added successfully.',
+                'data' => $send_back_data
             ]);
         }
     }
